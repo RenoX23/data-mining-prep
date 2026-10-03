@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Mining — Fair Copy & Numericals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['$$','$$']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{
+  --ink:#16243f;          /* deep blue-black, the pen of the notes */
+  --ink-soft:#3a4a6b;
+  --accent:#1f4ea3;       /* ballpoint blue */
+  --accent-tint:#eaf0fb;
+  --paper:#fbfaf6;        /* warm notebook white */
+  --rule:#e2ddd0;         /* faint ruled-line tone */
+  --warn:#9a3b2e;
+  --warn-tint:#fbeee9;
+  --good:#2f6b4f;
+  --good-tint:#e9f3ec;
+  --muted:#6b6f78;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:18px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px 120px}
+
+/* ---- cover ---- */
+.cover{padding:72px 0 40px;border-bottom:3px solid var(--ink)}
+.kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px
+}
+h1.title{
+  font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.4rem,6vw,3.7rem);
+  line-height:1.02;letter-spacing:-.02em;margin:0 0 18px
+}
+.sub{font-size:1.05rem;color:var(--ink-soft);max-width:60ch;margin:0}
+.sub em{color:var(--warn);font-style:normal;font-weight:500}
+
+/* ---- table of contents ---- */
+.toc{margin:40px 0 0;padding:26px 30px;background:#fff;border:1px solid var(--rule);border-radius:4px}
+.toc h2{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.toc ol{margin:0;padding:0;list-style:none;counter-reset:toc}
+.toc li{counter-increment:toc;margin:0;border-bottom:1px dotted var(--rule)}
+.toc li:last-child{border-bottom:0}
+.toc a{display:flex;align-items:baseline;gap:14px;padding:9px 0;text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--accent)}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--accent);min-width:2.2em}
+.toc .t{font-weight:500}
+
+/* ---- sections ---- */
+section{padding-top:64px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h2.sec{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.3rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 6px;border-bottom:1px solid var(--ink);padding-bottom:14px}
+h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;margin:38px 0 10px;color:var(--ink)}
+h4{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:26px 0 8px}
+p{margin:0 0 14px}
+strong{font-weight:600}
+.lead{font-size:1.05rem;color:var(--ink-soft)}
+
+/* ---- formula block ---- */
+.formula{
+  background:var(--accent-tint);border:1px solid #d2def5;border-left:4px solid var(--accent);
+  border-radius:4px;padding:6px 22px;margin:18px 0;overflow-x:auto
+}
+.formula .lbl{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin:10px 0 -6px}
+
+/* ---- worked example ---- */
+.work{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:4px 24px 14px;margin:20px 0}
+.work .tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin:16px 0 4px}
+.step{margin:0 0 6px}
+
+/* ---- callouts ---- */
+.note{border-radius:4px;padding:14px 20px;margin:20px 0;font-size:.96rem}
+.note .h{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;display:block;margin-bottom:5px}
+.warn{background:var(--warn-tint);border:1px solid #eccfc7;border-left:4px solid var(--warn)}
+.warn .h{color:var(--warn)}
+.tip{background:var(--good-tint);border:1px solid #cfe5d6;border-left:4px solid var(--good)}
+.tip .h{color:var(--good)}
+.intuition{background:#f5f3ec;border:1px solid var(--rule);border-left:4px solid var(--ink-soft)}
+.intuition .h{color:var(--ink-soft)}
+
+/* ---- tables ---- */
+.tbl-scroll{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 12px;text-align:center}
+th{background:var(--accent-tint);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.78rem;letter-spacing:.04em;color:var(--ink)}
+td.l,th.l{text-align:left}
+tr.total td{background:#f3f1ea;font-weight:600}
+.c0{color:var(--accent)} .c1{color:var(--warn)}
+
+ul,ol{margin:0 0 14px;padding-left:1.3em}
+li{margin:0 0 5px}
+code{font-family:'IBM Plex Mono',monospace;font-size:.86em;background:#f0eee6;padding:1px 5px;border-radius:3px}
+.divider{height:1px;background:var(--rule);margin:0;border:0}
+.back{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;float:right;margin-top:6px}
+.back:hover{color:var(--accent)}
+mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media print{
+  body{font-size:11pt} .toc,.back{display:none}
+  section{page-break-inside:auto} .work,.formula,.note{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <p class="kicker">Data Mining · Fair Copy + Solved Numericals</p>
+  <h1 class="title">Data&nbsp;Mining<br>Exam Companion</h1>
+  <p class="sub">Every formula, theory point, and worked numerical from the notes — rewritten cleanly with all steps shown. <em>Two arithmetic errors and one notation issue from the source have been corrected and flagged.</em></p>
+</header>
+
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#chi"><span class="t">Chi-Square Test of Independence</span></a></li>
+    <li><a href="#pearson"><span class="t">Pearson Correlation Coefficient</span></a></li>
+    <li><a href="#norm"><span class="t">Data Normalization (4 methods)</span></a></li>
+    <li><a href="#disc"><span class="t">Discretization &amp; Binning</span></a></li>
+    <li><a href="#fp"><span class="t">FP-Growth, Support, Confidence, Itemsets</span></a></li>
+    <li><a href="#dt"><span class="t">Decision Tree Classification</span></a></li>
+    <li><a href="#linreg"><span class="t">Linear Regression</span></a></li>
+    <li><a href="#logreg"><span class="t">Logistic Regression</span></a></li>
+  </ol>
+</nav>
+
+<!-- ============== 1. CHI SQUARE ============== -->
+<section id="chi">
+  <p class="eyebrow">Unit · Correlation Analysis</p>
+  <h2 class="sec">1 — Chi-Square Test of Independence</h2>
+  <p class="lead">Used during the <strong>data integration</strong> phase to check whether two <strong>categorical (nominal)</strong> attributes are correlated. If they are strongly related, one attribute is redundant and can be dropped.</p>
+
+  <h4>The hypotheses</h4>
+  <ul>
+    <li><strong>\(H_0\) (null hypothesis):</strong> the two attributes are <strong>independent</strong> (not correlated).</li>
+    <li><strong>\(H_a\) (alternate hypothesis):</strong> the two attributes are <strong>dependent</strong> (correlated).</li>
+  </ul>
+
+  <h4>Formulas</h4>
+  <div class="formula">
+    <span class="lbl">Chi-square statistic — if A has \(c\) values and B has \(r\) values</span>
+    $$\chi^2=\sum_{i=1}^{c}\sum_{j=1}^{r}\frac{(o_{ij}-e_{ij})^2}{e_{ij}}$$
+    <span class="lbl">Expected count for a cell</span>
+    $$e_{ij}=\frac{\text{Count}(A=a_i)\times \text{Count}(B=b_j)}{n}=\frac{(\text{row total})\times(\text{column total})}{\text{grand total}}$$
+    <span class="lbl">Degrees of freedom</span>
+    $$df=(c-1)(r-1)$$
+  </div>
+  <p>Here \(o_{ij}\) is the <strong>observed</strong> count and \(e_{ij}\) is the <strong>expected</strong> count (what you'd see if the attributes were truly independent), and \(n\) is the total number of observations.</p>
+
+  <div class="work">
+    <span class="tag">Numerical · 1500 people surveyed</span>
+    <p>Gender (M/F) was recorded against preferred reading material (Fiction / Non-fiction). The observed table:</p>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th class="l">Observed \(o_{ij}\)</th><th>Male</th><th>Female</th><th>Row total</th></tr>
+      <tr><td class="l">Fiction</td><td>250</td><td>200</td><td>450</td></tr>
+      <tr><td class="l">Non-fiction</td><td>50</td><td>1000</td><td>1050</td></tr>
+      <tr class="total"><td class="l">Column total</td><td>300</td><td>1200</td><td>1500</td></tr>
+    </table>
+    </div>
+
+    <span class="tag">Step 1 · Expected counts</span>
+    <p class="step">$$e_{\text{Fic,M}}=\frac{450\times300}{1500}=90 \qquad e_{\text{Fic,F}}=\frac{450\times1200}{1500}=360$$</p>
+    <p class="step">$$e_{\text{Non,M}}=\frac{1050\times300}{1500}=210 \qquad e_{\text{Non,F}}=\frac{1050\times1200}{1500}=840$$</p>
+
+    <span class="tag">Step 2 · Apply the chi-square formula</span>
+    <p class="step">$$\chi^2=\frac{(250-90)^2}{90}+\frac{(200-360)^2}{360}+\frac{(50-210)^2}{210}+\frac{(1000-840)^2}{840}$$</p>
+    <p class="step">Each squared difference is \(160^2=25600\):</p>
+    <p class="step">$$\chi^2=\frac{25600}{90}+\frac{25600}{360}+\frac{25600}{210}+\frac{25600}{840}$$</p>
+    <p class="step">$$\chi^2=284.44+71.11+121.90+30.48=\mathbf{507.93}$$</p>
+
+    <span class="tag">Step 3 · Compare with the critical value</span>
+    <p class="step">\(df=(2-1)(2-1)=1\). The critical value at significance \(\alpha=0.05\) for \(df=1\) is <strong>3.841</strong>.</p>
+    <p class="step">Since \(507.93 \gg 3.841\), we <strong>reject \(H_0\)</strong>.</p>
+  </div>
+
+  <div class="note tip">
+    <span class="h">Conclusion</span>
+    Gender and preferred reading material are <strong>strongly dependent (correlated)</strong>. The very large \(\chi^2\) value signals that knowing someone's gender tells you a lot about their reading preference — so in data integration these two attributes carry overlapping information.
+  </div>
+  <a class="back" href="#chi">↑ top</a>
+</section>
+
+<hr class="divider">
+
+<!-- ============== 2. PEARSON ============== -->
+<section id="pearson">
+  <p class="eyebrow">Unit · Correlation Analysis</p>
+  <h2 class="sec">2 — Pearson Correlation Coefficient</h2>
+  <p class="lead">The numeric-data counterpart of the chi-square test. Used in the <strong>data integration</strong> phase to detect redundancy <strong>between two numeric attributes</strong>.</p>
+
+  <h4>Formulas</h4>
+  <div class="formula">
+    <span class="lbl">Pearson coefficient</span>
+    $$r=\frac{\text{Cov}(x,y)}{\sigma_x\,\sigma_y}$$
+    <span class="lbl">Covariance</span>
+    $$\text{Cov}(x,y)=\frac1n\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)$$
+    <span class="lbl">Standard deviations</span>
+    $$\sigma_x=\sqrt{\tfrac1n\sum(x_i-\bar x)^2}\qquad \sigma_y=\sqrt{\tfrac1n\sum(y_i-\bar y)^2}$$
+  </div>
+
+  <div class="intuition">
+    <span class="h">How to read \(r\)</span>
+    \(r=+1\) → perfect positive correlation (as \(x\) rises, \(y\) rises). \(r=-1\) → perfect negative. \(r\approx 0\) → no linear relationship. The closer \(|r|\) is to 1, the more redundant the two attributes are, so one can be removed during feature selection / data reduction.
+  </div>
+
+  <div class="work">
+    <span class="tag">Numerical</span>
+    <div class="tbl-scroll">
+    <table>
+      <tr><th>\(x\)</th><th>\(y\)</th><th>\(x-\bar x\)</th><th>\(y-\bar y\)</th></tr>
+      <tr><td>1</td><td>2</td><td>−2</td><td>−4</td></tr>
+      <tr><td>2</td><td>4</td><td>−1</td><td>−2</td></tr>
+      <tr><td>3</td><td>6</td><td>0</td><td>0</td></tr>
+      <tr><td>4</td><td>8</td><td>1</td><td>2</td></tr>
+      <tr><td>5</td><td>10</td><td>2</td><td>4</td></tr>
+    </table>
+    </div>
+    <span class="tag">Step 1 · Means</span>
+    <p class="step">$$\bar x=\frac{1+2+3+4+5}{5}=3 \qquad \bar y=\frac{2+4+6+8+10}{5}=6$$</p>
+
+    <span class="tag">Step 2 · Covariance</span>
+    <p class="step">$$\text{Cov}(x,y)=\frac15\big[(-2)(-4)+(-1)(-2)+(0)(0)+(1)(2)+(2)(4)\big]$$</p>
+    <p class="step">$$=\frac15(8+2+0+2+8)=\frac{20}{5}=4$$</p>
+
+    <span class="tag">Step 3 · Standard deviations</span>
+    <p class="step">$$\sigma_x=\sqrt{\tfrac15\big[(-2)^2+(-1)^2+0^2+1^2+2^2\big]}=\sqrt{\tfrac{10}{5}}=\sqrt2=1.41$$</p>
+    <p class="step">$$\sigma_y=\sqrt{\tfrac15\big[(-4)^2+(-2)^2+0^2+2^2+4^2\big]}=\sqrt{\tfrac{40}{5}}=\sqrt8=2.82$$</p>
+
+    <span class="tag">Step 4 · Pearson coefficient</span>
+    <p class="step">$$r=\frac{4}{1.41\times2.82}=\frac{4}{3.976}\approx \mathbf{1.00}$$</p>
+  </div>
+
+  <div class="note tip">
+    <span class="h">Conclusion</span>
+    \(r=1\) → <strong>perfect positive linear correlation</strong>. All points lie exactly on a straight line with positive slope, so \(x\) and \(y\) are redundant and one can be dropped during data reduction.
+  </div>
+  <a class="back" href="#pearson">↑ top</a>
+</section>
+
+<hr class="divider">
+
+<!-- ============== 3. NORMALIZATION ============== -->
+<section id="norm">
+  <p class="eyebrow">Unit · Data Transformation</p>
+  <h2 class="sec">3 — Data Normalization</h2>
+  <p class="lead">Scaling attribute values into a common range so that attributes with large magnitudes don't dominate. All four methods below are demonstrated on the same dataset.</p>
+  <div class="note intuition"><span class="h">Dataset used throughout</span> \(\{200,\;300,\;400,\;600,\;1000\}\)</div>
+
+  <!-- a. min-max -->
+  <h3>(a) Min-Max Normalization</h3>
+  <div class="formula">
+    <span class="lbl">Min-max</span>
+    $$v_i'=\frac{v_i-\min_A}{\max_A-\min_A}\big(\text{new\_max}_A-\text{new\_min}_A\big)+\text{new\_min}_A$$
+  </div>
+  <p>Maps each value linearly into the range \([\text{new\_min},\,\text{new\_max}]\). Here we set <strong>new_min = 0, new_max = 1</strong>, with \(\min_A=200,\ \max_A=1000\) so \(\max_A-\min_A=800\).</p>
+  <div class="work">
+    <span class="tag">Working</span>
+    <p class="step">$$200'=\frac{200-200}{800}(1)+0=0$$</p>
+    <p class="step">$$300'=\frac{300-200}{800}=\frac{100}{800}=0.125$$</p>
+    <p class="step">$$400'=\frac{400-200}{800}=\frac{200}{800}=0.25$$</p>
+    <p class="step">$$600'=\frac{600-200}{800}=\frac{400}{800}=0.5$$</p>
+    <p class="step">$$1000'=\frac{1000-200}{800}=\frac{800}{800}=1$$</p>
+    <p class="step"><strong>Result:</strong> \(\{0,\;0.125,\;0.25,\;0.5,\;1\}\)</p>
+  </div>
+
+  <!-- b. z score -->
+  <h3>(b) Z-Score Normalization</h3>
+  <div class="formula">
+    <span class="lbl">Z-score (using standard deviation)</span>
+    $$v_i'=\frac{v_i-\mu_A}{\sigma_A}\qquad \mu=\text{mean},\ \ \sigma=\text{std. deviation}$$
+  </div>
+  <div class="work">
+    <span class="tag">Step 1 · Mean</span>
+    <p class="step">$$\mu=\frac{200+300+400+600+1000}{5}=\frac{2500}{5}=500$$</p>
+    <span class="tag">Step 2 · Standard deviation</span>
+    <p class="step">$$\sigma=\sqrt{\tfrac15\big[(200{-}500)^2+(300{-}500)^2+(400{-}500)^2+(600{-}500)^2+(1000{-}500)^2\big]}$$</p>
+    <p class="step">$$=\sqrt{\tfrac15(90000+40000+10000+10000+250000)}=\sqrt{\tfrac{400000}{5}}=\sqrt{80000}=282.84$$</p>
+    <span class="tag">Step 3 · Z-scores</span>
+    <p class="step">$$200'=\frac{200-500}{282.84}=-1.06\quad 300'=\frac{-200}{282.84}=-0.707\quad 400'=\frac{-100}{282.84}=-0.35$$</p>
+    <p class="step">$$600'=\frac{100}{282.84}=0.354\qquad 1000'=\frac{500}{282.84}=1.77$$</p>
+    <p class="step"><strong>Result:</strong> \(\{-1.06,\;-0.707,\;-0.35,\;+0.354,\;+1.77\}\)</p>
+  </div>
+
+  <!-- c. z score MAD -->
+  <h3>(c) Z-Score using Mean Absolute Deviation</h3>
+  <p>A more robust version: replace \(\sigma\) with the <strong>mean absolute deviation</strong> \(s_A\), which is less sensitive to outliers because deviations are not squared.</p>
+  <div class="formula">
+    <span class="lbl">Z-score with mean absolute deviation</span>
+    $$v_i'=\frac{v_i-\bar A}{s_A}\qquad s_A=\frac1n\big(|v_1-\bar A|+|v_2-\bar A|+\dots+|v_n-\bar A|\big)$$
+  </div>
+  <div class="work">
+    <span class="tag">Step 1 · Mean absolute deviation (mean \(\bar A=500\))</span>
+    <p class="step">$$s_A=\frac15\big(|200{-}500|+|300{-}500|+|400{-}500|+|600{-}500|+|1000{-}500|\big)$$</p>
+    <p class="step">$$=\frac15(300+200+100+100+500)=\frac{1200}{5}=240$$</p>
+    <span class="tag">Step 2 · Normalized values</span>
+    <p class="step">$$200'=\frac{200-500}{240}=-1.25\quad 300'=\frac{-200}{240}=-0.833\quad 400'=\frac{-100}{240}=-0.417$$</p>
+    <p class="step">$$600'=\frac{100}{240}=+0.417\qquad 1000'=\frac{500}{240}=+2.08$$</p>
+    <p class="step"><strong>Result:</strong> \(\{-1.25,\;-0.833,\;-0.417,\;+0.417,\;+2.08\}\)</p>
+  </div>
+
+  <!-- d. decimal -->
+  <h3>(d) Normalization by Decimal Scaling</h3>
+  <div class="formula">
+    <span class="lbl">Decimal scaling</span>
+    $$v_i'=\frac{v_i}{10^{\,j}}\qquad\text{where } j \text{ is the smallest integer such that } \max(|v_i'|)\le 1$$
+  </div>
+  <p>The largest absolute value is 1000. We need \(10^{\,j}\ge 1000\), so \(j=3\) (since \(10^3=1000\)). Divide every value by 1000.</p>
+  <div class="work">
+    <span class="tag">Working (example check: if A ranged \(-986\) to \(917\), then \(986/1000=0.98\le1\Rightarrow j=3\))</span>
+    <p class="step">$$200'=\tfrac{200}{10^3}=0.2\quad 300'=0.3\quad 400'=0.4\quad 600'=0.6\quad 1000'=1.0$$</p>
+    <p class="step"><strong>Result:</strong> \(\{0.2,\;0.3,\;0.4,\;0.6,\;1.0\}\)</p>
+  </div>
+  <a class="back" href="#norm">↑ top</a>
+</section>
+
+<hr class="divider">
+
+<!-- ============== 4. DISCRETIZATION ============== -->
+<section id="disc">
+  <p class="eyebrow">Unit · Data Transformation</p>
+  <h2 class="sec">4 — Discretization &amp; Binning</h2>
+  <p class="lead">Partitioning continuous values into bins, then smoothing noisy data. <strong>Always sort the data first</strong>, then apply the technique.</p>
+
+  <div class="formula">
+    <span class="lbl">Number of bins</span>
+    $$\text{number of bins}=\frac{\text{number of values}}{\text{frequency (values per bin)}}$$
+  </div>
+  <p>Three smoothing techniques are covered: <strong>(a) equal-frequency binning</strong>, <strong>(b) smoothing by bin mean</strong>, <strong>(c) smoothing by bin boundary</strong>.</p>
+
+  <!-- example 1 -->
+  <h3>Example 1 — data: 4, 8, 15, 21, 21, 24, 25, 28, 34</h3>
+  <p>9 values, frequency = 3 → \(9/3 = 3\) bins.</p>
+
+  <h4>(a) Equal-frequency bins</h4>
+  <div class="tbl-scroll"><table>
+    <tr><th>Bin 1</th><th>Bin 2</th><th>Bin 3</th></tr>
+    <tr><td>4, 8, 15</td><td>21, 21, 24</td><td>25, 28, 34</td></tr>
+  </table></div>
+
+  <h4>(b) Smoothing by bin mean — replace every value with its bin's mean</h4>
+  <div class="work">
+    <p class="step">$$\text{Bin 1 mean}=\frac{4+8+15}{3}=\frac{27}{3}=9$$</p>
+    <p class="step">$$\text{Bin 2 mean}=\frac{21+21+24}{3}=\frac{66}{3}=22$$</p>
+    <p class="step">$$\text{Bin 3 mean}=\frac{25+28+34}{3}=\frac{87}{3}=29$$</p>
+    <div class="tbl-scroll"><table>
+      <tr><th>Bin 1</th><th>Bin 2</th><th>Bin 3</th></tr>
+      <tr><td>9, 9, 9</td><td>22, 22, 22</td><td>29, 29, 29</td></tr>
+    </table></div>
+  </div>
+
+  <h4>(c) Smoothing by bin boundary — replace each value with the nearer of its bin's min/max</h4>
+  <p>In each bin, the smallest and largest values are the boundaries. Every other value is rounded to whichever boundary it is closer to.</p>
+  <div class="work">
+    <p class="step"><strong>Bin 1</strong> (min 4, max 15): 4→4, 8 is nearer to 4, 15→15 ⟹ <strong>4, 4, 15</strong></p>
+    <p class="step"><strong>Bin 2</strong> (min 21, max 24): 21→21, 21→21, 24→24 ⟹ <strong>21, 21, 24</strong></p>
+    <p class="step"><strong>Bin 3</strong> (min 25, max 34): 25→25, 28 is nearer to 25 (dist 3 vs 6), 34→34 ⟹ <strong>25, 25, 34</strong></p>
+  </div>
+
+  <!-- example 2 -->
+  <h3>Example 2 — data: 5, 10, 11, 13, 15, 35, 50, 56, 72, 92, 204, 215</h3>
+  <p>12 values, frequency = 4 → \(12/4 = 3\) bins.</p>
+
+  <h4>(a) Equal-frequency bins</h4>
+  <div class="tbl-scroll"><table>
+    <tr><th>Bin 1</th><th>Bin 2</th><th>Bin 3</th></tr>
+    <tr><td>5, 10, 11, 13</td><td>15, 35, 50, 56</td><td>72, 92, 204, 215</td></tr>
+  </table></div>
+
+  <h4>(b) Smoothing by bin mean</h4>
+  <div class="work">
+    <p class="step">$$\text{Bin 1 mean}=\frac{5+10+11+13}{4}=\frac{39}{4}=9.75$$</p>
+    <p class="step">$$\text{Bin 2 mean}=\frac{15+35+50+56}{4}=\frac{156}{4}=39$$</p>
+    <p class="step">$$\text{Bin 3 mean}=\frac{72+92+204+215}{4}=\frac{583}{4}=145.75$$</p>
+    <div class="tbl-scroll"><table>
+      <tr><th>Bin 1</th><th>Bin 2</th><th>Bin 3</th></tr>
+      <tr><td>9.75, 9.75, 9.75, 9.75</td><td>39, 39, 39, 39</td><td>145.75 ×4</td></tr>
+    </table></div>
+  </div>
+  <div class="note warn">
+    <span class="h">⚠ Correction from the original notes</span>
+    The handwritten notes wrote Bin 2 mean as <strong>114</strong>. That is an arithmetic slip — \(15+35+50+56=156\) and \(156\div4=\mathbf{39}\), <em>not</em> 114 (\(4\times114=456\), not 156). Use <strong>39</strong> in the exam.
+  </div>
+
+  <h4>(c) Smoothing by bin boundary</h4>
+  <div class="work">
+    <p class="step"><strong>Bin 1</strong> (min 5, max 13): 5→5; 10 nearer to 13; 11 nearer to 13; 13→13 ⟹ <strong>5, 13, 13, 13</strong></p>
+    <p class="step"><strong>Bin 2</strong> (min 15, max 56): 15→15; 35 nearer to 15 (20 vs 21); 50 nearer to 56; 56→56 ⟹ <strong>15, 15, 56, 56</strong></p>
+    <p class="step"><strong>Bin 3</strong> (min 72, max 215): 72→72; 92 nearer to 72; 204 nearer to 215; 215→215 ⟹ <strong>72, 72, 215, 215</strong></p>
+  </div>
+  <a class="back" href="#disc">↑ top</a>
+</section>
+
+<hr class="divider">
+
+<!-- ============== 5. FP GROWTH ============== -->
+<section id="fp">
+  <p class="eyebrow">Unit · Association Rule / Pattern Mining</p>
+  <h2 class="sec">5 — FP-Growth &amp; Frequent Patterns</h2>
+  <p class="lead">FP-Growth finds frequent itemsets <strong>without generating candidates</strong> (unlike Apriori). It compresses the database into an <strong>FP-tree</strong>, then mines patterns recursively from it.</p>
+
+  <h4>Support &amp; confidence (the foundation)</h4>
+  <div class="formula">
+    <span class="lbl">Support of an itemset A</span>
+    $$\text{sup}(A)=\frac{\text{freq}(A)}{\text{number of transactions}}$$
+    <span class="lbl">Confidence of a rule A → B</span>
+    $$\text{Conf}(A\Rightarrow B)=\frac{\text{sup\_count}(A\cup B)}{\text{sup\_count}(A)}$$
+  </div>
+
+  <h4>Apriori — context &amp; its limitations</h4>
+  <p>Apriori mines frequent patterns by generating candidate \(k\)-itemsets level by level. Its weaknesses, and the improvements people use:</p>
+  <ul>
+    <li><strong>Hash-based technique</strong> — reduces the size of candidate \(k\)-itemsets \(C_k\).</li>
+    <li><strong>Partitioning</strong> — partition the data; any itemset frequent overall must be frequent in at least one partition, so mine candidates per subset.</li>
+    <li><strong>Sampling</strong> — mine on a representative subset of the data for speed.</li>
+  </ul>
+
+  <div class="work">
+    <span class="tag">Numerical · 9 transactions, min support = 2</span>
+    <div class="tbl-scroll"><table>
+      <tr><th>TID</th><th class="l">Items</th><th>TID</th><th class="l">Items</th></tr>
+      <tr><td>T100</td><td class="l">I1, I2, I5</td><td>T600</td><td class="l">I2, I3</td></tr>
+      <tr><td>T200</td><td class="l">I2, I4</td><td>T700</td><td class="l">I1, I3</td></tr>
+      <tr><td>T300</td><td class="l">I2, I3</td><td>T800</td><td class="l">I1, I2, I3, I5</td></tr>
+      <tr><td>T400</td><td class="l">I1, I2, I4</td><td>T900</td><td class="l">I1, I2, I3</td></tr>
+      <tr><td>T500</td><td class="l">I1, I3</td><td></td><td class="l"></td></tr>
+    </table></div>
+
+    <span class="tag">Step 1 · Count support of each item (1-itemsets)</span>
+    <div class="tbl-scroll"><table>
+      <tr><th>Item</th><th>I1</th><th>I2</th><th>I3</th><th>I4</th><th>I5</th></tr>
+      <tr><td>Support count</td><td>6</td><td>7</td><td>6</td><td>2</td><td>2</td></tr>
+    </table></div>
+    <p class="step">All items meet min support (≥2), so all are kept.</p>
+
+    <span class="tag">Step 2 · Build the ordered item list L (sort by descending frequency)</span>
+    <p class="step">$$L=\{\,I2{:}7,\;I1{:}6,\;I3{:}6,\;I4{:}2,\;I5{:}2\,\}$$</p>
+
+    <span class="tag">Step 3 · Reorder each transaction's items according to L</span>
+    <div class="tbl-scroll"><table>
+      <tr><th>TID</th><th class="l">Ordered items</th><th>TID</th><th class="l">Ordered items</th></tr>
+      <tr><td>T100</td><td class="l">I2, I1, I5</td><td>T600</td><td class="l">I2, I3</td></tr>
+      <tr><td>T200</td><td class="l">I2, I4</td><td>T700</td><td class="l">I1, I3</td></tr>
+      <tr><td>T300</td><td class="l">I2, I3</td><td>T800</td><td class="l">I2, I1, I3, I5</td></tr>
+      <tr><td>T400</td><td class="l">I2, I1, I4</td><td>T900</td><td class="l">I2, I1, I3</td></tr>
+      <tr><td>T500</td><td class="l">I1, I3</td><td></td><td class="l"></td></tr>
+    </table></div>
+  </div>
+
+  <h4>Step 4 · FP-Tree construction</h4>
+  <p>Insert each ordered transaction into a tree starting from a <code>null</code> root, sharing prefixes and incrementing counts where paths overlap. The completed tree:</p>
+  <div class="work">
+    <pre style="font-family:'IBM Plex Mono',monospace;font-size:.84rem;line-height:1.5;overflow-x:auto;color:var(--ink)">
+              null
+             /     \
+        I2:7        I1:2          ← I1:2 branch = T500, T700
+       /  |  \         \
+   I1:4  I3:2  I4:1     I3:2
+   /  \   (T300,
+ I5:1  I3:2  T600)
+(T100)  / \
+     I4:1  I5:1
+    (T400)(T800)
+    </pre>
+    <p class="step" style="font-size:.92rem;color:var(--muted)">Node counts verify against the support table: I2 appears 7×, I1 appears 4+2 = 6×, I3 appears 2+2+2 = 6×, I4 = 1+1 = 2×, I5 = 1+1 = 2×.</p>
+  </div>
+
+  <div class="intuition">
+    <span class="h">Header table (item → node-links)</span>
+    The FP-tree is accompanied by a header table listing each frequent item with its support count and a linked list joining all its occurrences in the tree:
+    <div class="tbl-scroll" style="margin-top:10px"><table>
+      <tr><th>Item</th><th>I2</th><th>I1</th><th>I3</th><th>I4</th><th>I5</th></tr>
+      <tr><td>Support</td><td>7</td><td>6</td><td>6</td><td>2</td><td>2</td></tr>
+    </table></div>
+  </div>
+
+  <h4>Step 5 · FP-mining — mine bottom-up from the least frequent item</h4>
+  <p>For each item (starting from the bottom of L), collect the <strong>prefix paths</strong> → form the <strong>conditional pattern base</strong> → count items in it, drop those below min support → build the <strong>conditional FP-tree</strong> → generate frequent patterns.</p>
+
+  <div class="work">
+    <span class="tag">Item I5 (suffix)</span>
+    <p class="step"><strong>Prefix paths:</strong> ⟨I2, I1 : 1⟩ and ⟨I2, I1, I3 : 1⟩</p>
+    <p class="step"><strong>Conditional pattern base:</strong> {I2, I1}:1, {I2, I1, I3}:1</p>
+    <p class="step"><strong>Counts:</strong> I2 = 2, I1 = 2, I3 = 1. Since I3 = 1 &lt; min sup, drop it.</p>
+    <p class="step"><strong>Conditional FP-tree:</strong> ⟨I2:2, I1:2⟩</p>
+    <p class="step"><strong>Frequent patterns:</strong> {I2, I5}:2, {I1, I5}:2, {I2, I1, I5}:2</p>
+  </div>
+
+  <div class="work">
+    <span class="tag">Item I4</span>
+    <p class="step"><strong>Prefix paths:</strong> ⟨I2, I1 : 1⟩ and ⟨I2 : 1⟩</p>
+    <p class="step"><strong>Conditional pattern base:</strong> {I2, I1}:1, {I2}:1 → counts I2 = 2, I1 = 1. Drop I1 (&lt; min sup).</p>
+    <p class="step"><strong>Conditional FP-tree:</strong> ⟨I2:2⟩</p>
+    <p class="step"><strong>Frequent pattern:</strong> {I2, I4}:2</p>
+  </div>
+
+  <div class="work">
+    <span class="tag">Item I3</span>
+    <p class="step"><strong>Prefix paths:</strong> ⟨I2, I1 : 2⟩, ⟨I2 : 2⟩, ⟨I1 : 2⟩</p>
+    <p class="step"><strong>Counts:</strong> I2 = 2+2 = 4, I1 = 2+2 = 4. Both ≥ min sup.</p>
+    <p class="step"><strong>Conditional FP-tree:</strong> ⟨I2:4, I1:4⟩</p>
+    <p class="step"><strong>Frequent patterns:</strong> {I2, I3}:4, {I1, I3}:4, {I2, I1, I3}:2</p>
+  </div>
+
+  <div class="work">
+    <span class="tag">Item I1</span>
+    <p class="step"><strong>Prefix paths:</strong> ⟨I2 : 4⟩</p>
+    <p class="step"><strong>Conditional FP-tree:</strong> ⟨I2:4⟩</p>
+    <p class="step"><strong>Frequent pattern:</strong> {I2, I1}:4</p>
+  </div>
+
+  <div class="note tip">
+    <span class="h">Full set of frequent patterns</span>
+    Length-1: I2:7, I1:6, I3:6, I4:2, I5:2 &nbsp;·&nbsp; {I2,I1}:4 &nbsp;·&nbsp; {I2,I4}:2 &nbsp;·&nbsp; {I2,I3}:4, {I1,I3}:4, {I2,I1,I3}:2 &nbsp;·&nbsp; {I2,I5}:2, {I1,I5}:2, {I2,I1,I5}:2
+  </div>
+
+  <h4>Closed vs Maximal frequent itemsets</h4>
+  <ul>
+    <li><strong>Closed itemset:</strong> an itemset is closed if <strong>none of its immediate supersets has the same support count</strong> as it.</li>
+    <li><strong>Maximal frequent itemset:</strong> a frequent itemset that has <strong>no frequent superset</strong>.</li>
+  </ul>
+  <div class="work">
+    <span class="tag">Numerical · min support = 2</span>
+    <p class="step">Given supports: \(A=3,\ B=3,\ C=3,\ AB=2,\ AC=2,\ BC=2,\ ABC=1\).</p>
+    <p class="step">\(ABC=1 &lt; 2\) → not frequent. So \(A,B,C\) are <strong>not maximal</strong> (each has a frequent 2-item superset).</p>
+    <p class="step"><strong>Maximal frequent itemsets = {AB, AC, BC}</strong> — none of these has a frequent superset (their only superset \(ABC\) is infrequent).</p>
+  </div>
+  <a class="back" href="#fp">↑ top</a>
+</section>
+
+<hr class="divider">
+
+<!-- ============== 6. DECISION TREE ============== -->
+<section id="dt">
+  <p class="eyebrow">Unit · Classification</p>
+  <h2 class="sec">6 — Decision Tree Classification</h2>
+  <p class="lead">A greedy, top-down method (Hunt's algorithm). At each node we pick the attribute that produces the <strong>purest</strong> children. "Purity" is measured by an impurity index; the best split has the <strong>lowest impurity / highest gain</strong>.</p>
+
+  <h4>Three impurity measures for a node \(t\)</h4>
+  <div class="formula">
+    <span class="lbl">Gini index — \(p_i(t)\) is the fraction of class \(i\) at node \(t\)</span>
+    $$\text{Gini}(t)=1-\sum_{i=0}^{c-1}\big[p_i(t)\big]^2$$
+    <span class="lbl">Entropy</span>
+    $$\text{Entropy}(t)=-\sum_{i=0}^{c-1}p_i(t)\,\log_2 p_i(t)$$
+    <span class="lbl">Misclassification error</span>
+    $$\text{Error}(t)=1-\max_i\big[p_i(t)\big]$$
+  </div>
+
+  <h4>Choosing the best split — the gain</h4>
+  <div class="formula">
+    <span class="lbl">Weighted impurity of children after a split (k children)</span>
+    $$M=\sum_{i=1}^{k}\frac{n_i}{n}\,\text{Impurity}(i)\qquad n_i=\text{records in child } i,\ n=\text{total}$$
+    <span class="lbl">Gain = (impurity of parent before split) − (weighted impurity of children)</span>
+    $$\text{Gain}=P-M$$
+  </div>
+  <div class="note tip">
+    <span class="h">The decision rule — memorise this</span>
+    Compute \(M\) for every candidate attribute. The best split is the one with the <strong>smallest \(M\)</strong>, which is the same as the <strong>largest Gain</strong>. A lower degree of impurity is always preferred.
+  </div>
+
+  <div class="work">
+    <span class="tag">Dataset · 20 customers, class C0 vs C1 (10 each)</span>
+    <p class="step">Attributes: <strong>Gender</strong> (M/F), <strong>Car Type</strong> (Family/Sports/Luxury), <strong>Shirt Size</strong> (Small/Medium/Large/Ex-Large). Class distribution per split value below.</p>
+    <div class="tbl-scroll"><table>
+      <tr><th class="l">Split → child node</th><th>C0</th><th>C1</th><th>Total</th></tr>
+      <tr><td class="l">Gender = Male (N11)</td><td class="c0">6</td><td class="c1">4</td><td>10</td></tr>
+      <tr><td class="l">Gender = Female (N12)</td><td class="c0">4</td><td class="c1">6</td><td>10</td></tr>
+      <tr><td class="l">Car = Family (N21)</td><td class="c0">1</td><td class="c1">3</td><td>4</td></tr>
+      <tr><td class="l">Car = Sports (N22)</td><td class="c0">8</td><td class="c1">0</td><td>8</td></tr>
+      <tr><td class="l">Car = Luxury (N23)</td><td class="c0">1</td><td class="c1">7</td><td>8</td></tr>
+      <tr><td class="l">Shirt = Small (N31)</td><td class="c0">3</td><td class="c1">2</td><td>5</td></tr>
+      <tr><td class="l">Shirt = Medium (N32)</td><td class="c0">3</td><td class="c1">4</td><td>7</td></tr>
+      <tr><td class="l">Shirt = Large (N33)</td><td class="c0">2</td><td class="c1">2</td><td>4</td></tr>
+      <tr><td class="l">Shirt = Ex-Large (N34)</td><td class="c0">2</td><td class="c1">2</td><td>4</td></tr>
+    </table></div>
+  </div>
+
+  <!-- ---- GINI ---- -->
+  <h3>Method A — Gini Index</h3>
+  <div class="work">
+    <span class="tag">Parent impurity (10 C0, 10 C1)</span>
+    <p class="step">$$\text{Gini}(P)=1-\Big[(\tfrac{10}{20})^2+(\tfrac{10}{20})^2\Big]=1-[0.25+0.25]=0.5$$</p>
+
+    <span class="tag">Gender → \(M_1\)</span>
+    <p class="step">$$\text{Gini}(N11)=1-\big[(\tfrac6{10})^2+(\tfrac4{10})^2\big]=1-[0.36+0.16]=0.48$$</p>
+    <p class="step">$$\text{Gini}(N12)=1-\big[(\tfrac4{10})^2+(\tfrac6{10})^2\big]=0.48$$</p>
+    <p class="step">$$M_1=\tfrac{10}{20}(0.48)+\tfrac{10}{20}(0.48)=0.24+0.24=0.48$$</p>
+
+    <span class="tag">Car Type → \(M_2\)</span>
+    <p class="step">$$\text{Gini}(N21)=1-\big[(\tfrac14)^2+(\tfrac34)^2\big]=1-[0.0625+0.5625]=0.375$$</p>
+    <p class="step">$$\text{Gini}(N22)=1-\big[(\tfrac88)^2+(\tfrac08)^2\big]=0 \quad(\text{pure node!})$$</p>
+    <p class="step">$$\text{Gini}(N23)=1-\big[(\tfrac18)^2+(\tfrac78)^2\big]=1-[0.0156+0.7656]=0.21875$$</p>
+    <p class="step">$$M_2=\tfrac4{20}(0.375)+\tfrac8{20}(0)+\tfrac8{20}(0.21875)=0.075+0+0.0875=0.1625$$</p>
+
+    <span class="tag">Shirt Size → \(M_3\)</span>
+    <p class="step">$$\text{Gini}(N31)=1-\big[(\tfrac35)^2+(\tfrac25)^2\big]=0.48$$</p>
+    <p class="step">$$\text{Gini}(N32)=1-\big[(\tfrac37)^2+(\tfrac47)^2\big]=0.4898$$</p>
+    <p class="step">$$\text{Gini}(N33)=\text{Gini}(N34)=1-\big[(\tfrac24)^2+(\tfrac24)^2\big]=0.5$$</p>
+    <p class="step">$$M_3=\tfrac5{20}(0.48)+\tfrac7{20}(0.4898)+\tfrac4{20}(0.5)+\tfrac4{20}(0.5)=0.4914$$</p>
+
+    <span class="tag">Gains</span>
+    <p class="step">Gender: \(0.5-0.48=\mathbf{0.02}\)</p>
+    <p class="step">Car Type: \(0.5-0.1625=\mathbf{0.3375}\) ← largest</p>
+    <p class="step">Shirt Size: \(0.5-0.4914=\mathbf{0.0086}\)</p>
+  </div>
+
+  <div class="note warn">
+    <span class="h">⚠ Important correction — which attribute is the root?</span>
+    The original notes conclude that <strong>Shirt Size (M3)</strong> is the root node. That is wrong. You choose the attribute with the <strong>largest gain</strong> = <strong>smallest weighted impurity \(M\)</strong>. Here \(M_2=0.1625\) is the smallest and Car Type's gain \(0.3375\) is the largest, so the root node is <strong>Car Type</strong>. (Notice Sports is a perfectly pure node, Gini = 0 — a strong hint that Car Type splits the data best.) The entropy method below confirms the same answer.
+  </div>
+
+  <!-- ---- ENTROPY ---- -->
+  <h3>Method B — Entropy &amp; Information Gain</h3>
+  <div class="note intuition">
+    <span class="h">Notation note (log base)</span>
+    Standard entropy uses \(\log_2\). This worked solution (matching the source notes) evaluates the logs in <strong>base 10</strong>, so for a 50:50 split it gives \(0.3010\) instead of \(1.0\). Because changing the log base just multiplies every entropy by the same constant, the <strong>ranking of attributes (and the chosen root) is identical</strong> either way. Numbers below are base-10 to match what you'll likely see in class.
+  </div>
+  <div class="work">
+    <span class="tag">Parent entropy</span>
+    <p class="step">$$\text{Entropy}(P)=-\big[\tfrac{10}{20}\log(\tfrac{10}{20})+\tfrac{10}{20}\log(\tfrac{10}{20})\big]=0.3010$$</p>
+
+    <span class="tag">Gender → \(M_1\)</span>
+    <p class="step">$$E(N11)=-\big[\tfrac6{10}\log\tfrac6{10}+\tfrac4{10}\log\tfrac4{10}\big]=0.2922,\quad E(N12)=0.2922$$</p>
+    <p class="step">$$M_1=\tfrac{10}{20}(0.2922)+\tfrac{10}{20}(0.2922)=0.2922$$</p>
+
+    <span class="tag">Car Type → \(M_2\)</span>
+    <p class="step">$$E(N21)=-\big[\tfrac14\log\tfrac14+\tfrac34\log\tfrac34\big]=0.244$$</p>
+    <p class="step">$$E(N22)=0\ (\text{pure}),\qquad E(N23)=-\big[\tfrac18\log\tfrac18+\tfrac78\log\tfrac78\big]=0.1636$$</p>
+    <p class="step">$$M_2=\tfrac4{20}(0.244)+\tfrac8{20}(0)+\tfrac8{20}(0.1636)=0.0488+0+0.0654=0.11424$$</p>
+
+    <span class="tag">Shirt Size → \(M_3\)</span>
+    <p class="step">$$E(N31)=0.2922,\ \ E(N32)=0.2966,\ \ E(N33)=E(N34)=0.3010$$</p>
+    <p class="step">$$M_3=\tfrac5{20}(0.2922)+\tfrac7{20}(0.2966)+\tfrac4{20}(0.3010)+\tfrac4{20}(0.3010)=0.297225$$</p>
+
+    <span class="tag">Information gains</span>
+    <p class="step">Gender: \(0.3010-0.2922=\mathbf{0.0088}\)</p>
+    <p class="step">Car Type: \(0.3010-0.11424=\mathbf{0.1868}\) ← largest</p>
+    <p class="step">Shirt Size: \(0.3010-0.297225=\mathbf{0.0038}\)</p>
+  </div>
+  <div class="note tip">
+    <span class="h">Conclusion (both methods agree)</span>
+    <strong>Car Type</strong> gives the highest gain → it is selected as the <strong>root node</strong>. The tree then recurses on each child (the Sports child is already pure → a leaf labelled C0).
+  </div>
+
+  <h4>Advantages &amp; disadvantages of decision trees</h4>
+  <p><strong>Advantages:</strong> inexpensive to construct; easy to interpret for small trees; robust to noise; extremely fast at classifying unknown records; handle redundant and irrelevant attributes well.</p>
+  <p><strong>Disadvantages:</strong> each decision boundary involves only a single attribute (axis-parallel splits); the greedy nature can cause sub-optimal choices ("favouritism").</p>
+  <a class="back" href="#dt">↑ top</a>
+</section>
+
+<hr class="divider">
+
+<!-- ============== 7. LINEAR REGRESSION ============== -->
+<section id="linreg">
+  <p class="eyebrow">Unit · Prediction (Supervised)</p>
+  <h2 class="sec">7 — Linear Regression</h2>
+  <p class="lead">A supervised method that fits a straight line \(y=w_0+w_1x\) to numeric data for future prediction. \(w_0\) is the intercept and \(w_1\) is the slope.</p>
+
+  <div class="intuition">
+    <span class="h">General form</span>
+    For multiple inputs: \(y(x,w)=w_0+w_1x_1+w_2x_2+\dots+w_nx_n\), or using basis functions \(y(x,w)=w_0+\sum_{i=1}^{m}w_i\phi_i(x)\). Common basis/learning functions include the Gaussian \(\phi_j(x)=e^{-(x-\mu)^2/2\sigma^2}\), the sigmoid \(\sigma(x)=\tfrac1{1+e^{-x}}\), and \(\tanh(x)=2\sigma(x)-1\).
+  </div>
+
+  <h4>Least-squares estimates</h4>
+  <div class="formula">
+    <span class="lbl">Slope</span>
+    $$w_1=\frac{N\sum xy-(\sum x)(\sum y)}{N\sum x^2-(\sum x)^2}$$
+    <span class="lbl">Intercept</span>
+    $$w_0=\frac{\sum y-w_1\sum x}{N}\qquad N=\text{number of data points}$$
+  </div>
+
+  <div class="work">
+    <span class="tag">Numerical</span>
+    <div class="tbl-scroll"><table>
+      <tr><th>\(x\)</th><td>60</td><td>61</td><td>62</td><td>63</td><td>65</td></tr>
+      <tr><th>\(y\)</th><td>3.1</td><td>3.6</td><td>3.8</td><td>4.0</td><td>4.1</td></tr>
+    </table></div>
+    <span class="tag">Step 1 · Sums (N = 5)</span>
+    <p class="step">$$\sum x=311,\quad \sum y=18.6,\quad \sum xy=1159.7$$</p>
+    <p class="step">$$\sum x^2=60^2+61^2+62^2+63^2+65^2=19359$$</p>
+
+    <span class="tag">Step 2 · Slope and intercept</span>
+    <p class="step">$$w_1=\frac{5(1159.7)-(311)(18.6)}{5(19359)-311^2}=\frac{5798.5-5784.6}{96795-96721}=\frac{13.9}{74}\approx 0.187$$</p>
+    <p class="step">$$w_0=\frac{18.6-0.187(311)}{5}=\frac{18.6-58.16}{5}\approx -7.911$$</p>
+    <p class="step"><strong>Regression line:</strong> \(\;y=-7.911+0.187\,x\)</p>
+
+    <span class="tag">Step 3 · Predictions (estimated y)</span>
+    <p class="step">$$\hat y(60)=3.3,\ \ \hat y(61)=3.496,\ \ \hat y(62)=3.684,\ \ \hat y(63)=3.871,\ \ \hat y(65)=4.245$$</p>
+  </div>
+
+  <h4>Residual (standard) error</h4>
+  <div class="formula">
+    <span class="lbl">Residual error — spread of actual values around the fitted line</span>
+    $$\varepsilon=\sqrt{\frac{\sum (y-\hat y)^2}{n-2}}$$
+  </div>
+  <div class="work">
+    <span class="tag">Working</span>
+    <p class="step">$$\sum(y-\hat y)^2=(3.1{-}3.3)^2+(3.6{-}3.496)^2+(3.8{-}3.684)^2+(4{-}3.871)^2+(4.1{-}4.245)^2$$</p>
+    <p class="step">$$=0.04+0.0108+0.0135+0.0166+0.0210\approx 0.103$$</p>
+    <p class="step">$$\varepsilon=\sqrt{\frac{0.103}{5-2}}=\sqrt{0.03433}=0.185$$</p>
+  </div>
+  <div class="intuition">
+    <span class="h">What \(\varepsilon\) tells you</span>
+    \(\varepsilon=0.185\) is the typical gap between observed and predicted \(y\). The notes illustrate this by writing \(y=w_0+w_1x-\varepsilon\): e.g. for the first point \(3.3-0.185=3.11\approx 3.1\), recovering the original observed value. Small \(\varepsilon\) ⇒ the line fits well.
+  </div>
+  <a class="back" href="#linreg">↑ top</a>
+</section>
+
+<hr class="divider">
+
+<!-- ============== 8. LOGISTIC REGRESSION ============== -->
+<section id="logreg">
+  <p class="eyebrow">Unit · Classification (Supervised)</p>
+  <h2 class="sec">8 — Logistic Regression</h2>
+  <p class="lead">Used for <strong>classification</strong> (not prediction of a continuous value). It feeds a linear combination through the <strong>sigmoid</strong>, producing an output between 0 and 1 that is read as a probability.</p>
+
+  <h4>Sigmoid &amp; hypothesis function</h4>
+  <div class="formula">
+    <span class="lbl">Sigmoid</span>
+    $$\sigma(x)=\frac{1}{1+e^{-x}}$$
+    <span class="lbl">Hypothesis for two features</span>
+    $$h_\theta(x)=\sigma(b_0+b_1x_1+b_2x_2)=\frac{1}{1+e^{-(b_0+b_1x_1+b_2x_2)}}$$
+  </div>
+  <div class="note intuition">
+    <span class="h">Decision rule (threshold = 0.5)</span>
+    If \(h_\theta(x)\ge 0.5\Rightarrow y=1\) (e.g. malignant / cancer). If \(h_\theta(x)&lt;0.5\Rightarrow y=0\) (benign / non-cancer).
+  </div>
+
+  <h4>Training by gradient descent</h4>
+  <div class="formula">
+    <span class="lbl">Weight update rule (per feature, α = learning rate)</span>
+    $$b=b+\alpha\,(y-y_{pred})\,y_{pred}\,(1-y_{pred})\,x$$
+  </div>
+
+  <div class="work">
+    <span class="tag">Numerical · tumour data, α = 0.3</span>
+    <div class="tbl-scroll"><table>
+      <tr><th>tumour size \(x_1\)</th><td>2.7</td><td>1.4</td><td>3.3</td><td>3.06</td><td>5.3</td></tr>
+      <tr><th>tumour vol \(x_2\)</th><td>2.5</td><td>2.3</td><td>4.4</td><td>3.05</td><td>2.75</td></tr>
+      <tr><th>class \(y\)</th><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+    </table></div>
+
+    <span class="tag">Record 1 · \(x_1=2.7,\ x_2=2.5,\ y=0\) — start with \(b_0=b_1=b_2=0\)</span>
+    <p class="step">$$y_{pred}=\frac{1}{1+e^{-(0+0\cdot2.7+0\cdot2.5)}}=\frac{1}{1+e^{0}}=\frac12=0.5$$</p>
+    <p class="step">$$b_0=0+0.3(0-0.5)(0.5)(1-0.5)(1)=0.3(-0.125)=-0.0375$$</p>
+    <p class="step">$$b_1=0+0.3(0-0.5)(0.5)(0.5)(2.7)=-0.1012$$</p>
+    <p class="step">$$b_2=0+0.3(0-0.5)(0.5)(0.5)(2.5)=-0.09375$$</p>
+    <p class="step"><strong>After epoch 1 (record 1):</strong> \(b_0=-0.0375,\ b_1=-0.1012,\ b_2=-0.09375\)</p>
+
+    <span class="tag">Record 2 · \(x_1=1.4,\ x_2=2.3\) — predict with the updated weights</span>
+    <p class="step">$$y_{pred}=\frac{1}{1+e^{-(-0.0375+(-0.101)(1.4)+(-0.09375)(2.3))}}=0.403$$</p>
+    <p class="step">\(0.403 &lt; 0.5\Rightarrow y=0\) — matches the true class, so the classification is correct.</p>
+  </div>
+  <div class="intuition">
+    <span class="h">Why this matters</span>
+    Linear regression predicts a continuous number; logistic regression squashes the line through the sigmoid to predict a <strong>class label</strong>. The same weight-update loop continues over all records and repeats for several epochs until the weights converge.
+  </div>
+  <a class="back" href="#logreg">↑ top</a>
+</section>
+
+<hr class="divider">
+<p style="margin-top:48px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--muted);text-align:center">
+  Fair copy of handwritten data-mining notes · all numericals re-derived and verified · corrected items flagged in amber
+</p>
+
+</div>
+</body>
+</html>

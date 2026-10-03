@@ -1,0 +1,2661 @@
+--- PAGE 1 ---
+ 
+ 
+ 
+ 
+ 
+CHRIST (Deemed to be University), Bangalore 
+School of Engineering and Technology 
+Department of Computer Science and Engineering 
+COURSE PLAN 
+Odd Semester/2026-27 
+
+--- PAGE 2 ---
+ 
+ 
+ 
+ 
+ 
+Semester 
+III 
+Program
+me 
+& 
+Class 
+M. Tech / 3MTCS 
+Course Code 
+MTCS344E01 Course 
+Type 
+PEC 
+Course Title 
+ 
+Advanced 
+Data Mining 
+LCA 
+No 
+Total Hours 
+45 
+Hours per 
+week 
+3 
+Faculty Name 
+Dr Manohar M Contact 
+Details 
+and 
+Office 
+Hours 
+Cabin No. 07, Ground Floor, 2nd Block, SoET, 
+Kengeri Campus 
+Email:  manohar.m@christuniversity.in 
+Class Policies and 
+Guidelines 
+• 
+Mobile phones and Laptops may be used as per the instructions given by 
+the faculty. 
+• 
+Students are requested to adhere on the CIA deadline and assignment 
+submission.  
+• 
+Failing which the re test or re-submission can be considered only for 
+80% of marks 
+• 
+Mode of communication to students through university mail and LMS 
+only. 
+Course 
+Description 
+This course provides an understanding of basic fundamentals, methodologies 
+and applications of data mining. It explores both supervised and unsupervised 
+learning methods. Through practical applications, students will gain the 
+knowledge to solve real world problems. 
+Course 
+Objectives 
+(Optional) 
+1. To gain a comprehensive understanding of data mining fundamentals and 
+develop expertise in data preprocessing techniques. 
+2. To explore and apply the supervised and unsupervised learning methods in 
+data mining. 
+
+--- PAGE 3 ---
+ 
+ 
+ 
+ 
+ 
+3. To design and implement models for solving complex real-world problems 
+effectively. 
+Course Outcomes CO1: Explain the basic fundamentals of Data mining and how to preprocess 
+the data. (L2) 
+CO2: Apply appropriate association algorithm to mine frequent patterns.(L3) 
+CO3: Apply classification and related data mining techniques accurately and 
+efficiently using Python for computations.(L3) 
+CO4: Apply clustering and related data mining techniques accurately and 
+efficiently using Python for computations. (L3) 
+CO5: Develop a model using appropriate algorithm to solve real world 
+problems.(L3) 
+SECTION II 
+ 
+Week  
+Module/ Unit/ 
+Topic details 
+Andragog
+y 
+Ungraded 
+formative 
+Assessments 
+Resource/ Reference 
+details 
+ 1 
+Unit 
+ 
+1 
+:  
+Introduction 
+to 
+Data 
+Mining: 
+ 
+Data Mining: 
+Introduction to 
+Data Mining- 
+Steps in Data 
+Mining 
+Process-Major 
+Issues in Data 
+Mining-
+Working with 
+Data: Scraping 
+the Web 
+ NA 
+ Question and answer 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+ 2 
+Unit 
+ 
+1 
+:  
+Introduction 
+to 
+Data 
+Mining: 
+Data 
+Preprocessing: 
+An Overview-
+Data Cleaning- 
+ NA 
+ Discussion  
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+
+--- PAGE 4 ---
+ 
+ 
+ 
+ 
+ 
+Data 
+Integration-
+Data 
+Reduction 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+ 3 
+ Unit  1 :  
+Introduction 
+to 
+Data 
+Mining: 
+Data 
+Transformatio
+n. 
+Practical 
+Experiments / 
+Experiential 
+Learning:  
+ 
+Ex 1:Write a 
+python 
+program 
+to 
+scrape 
+the 
+details of most 
+downloaded 
+articles 
+from 
+AI in last 90 
+days 
+https://www.jo
+urnals.elsevier.
+com/artificial-
+intelligence/m
+ost-
+downloaded-
+articles 
+Scrape below 
+mentioned 
+details: 
+Paper Title 
+ 
+Experient
+ial  
+Learning 
+ Question and answer 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+
+--- PAGE 5 ---
+ 
+ 
+ 
+ 
+ 
+Authors 
+Published Date 
+Paper URL 
+Ex 2: Write a 
+Python 
+program 
+to 
+perform 
+data 
+cleaning on a 
+sample dataset. 
+The 
+program 
+should handle 
+tasks such as 
+handling 
+missing values, 
+removing 
+duplicate 
+entries 
+and 
+dealing 
+with 
+outliers. 
+4 
+Unit 
+ 
+2  
+:Frequent 
+Pattern 
+Mining:  
+Mining 
+Frequent 
+Patterns-Basic 
+Concepts-
+Efficient 
+and 
+scalable 
+frequent item 
+set 
+mining 
+methods: 
+Apriori 
+Algorithm 
+NA 
+Quiz  
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+5 
+Unit 
+ 
+2  
+:Frequent 
+Pattern 
+Mining:  
+FP-Growth 
+Algorithm- 
+Advanced 
+NA 
+Question and answer 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+
+--- PAGE 6 ---
+ 
+ 
+ 
+ 
+ 
+Pattern 
+Mining: 
+Pattern Mining 
+in Multilevel, 
+Multidimensio
+nal 
+Space- 
+Constraint-
+Based 
+Frequent 
+Pattern Mining 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+6 
+Unit 
+ 
+2  
+:Frequent 
+Pattern 
+Mining:  
+Mining 
+HighDimensio
+nal Data and 
+Colossal 
+Patterns. 
+ 
+Practical 
+Experiments / 
+Experiential 
+Learning:  
+ 
+Ex 1:Write a 
+python 
+program to 
+implement the 
+apriori 
+algorithm for 
+frequent 
+itemset 
+mining. 
+Ex 2: Write a 
+python 
+program 
+to 
+mine frequent 
+patterns using 
+the FP-Growth 
+algorithm. 
+Experient
+ial  
+Learning 
+Concept Mapping 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+
+--- PAGE 7 ---
+ 
+ 
+ 
+ 
+ 
+7 
+Unit 
+ 
+3 
+:  
+Classification:  
+        Basic 
+Concepts-
+Classification 
+by 
+Decision 
+Tree 
+Induction-
+Advanced 
+classification 
+methods:Bayes
+ian 
+Belief 
+Networks-
+Classification 
+by 
+Backpropagati
+on 
+NA 
+Quiz  
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+8 
+Unit 
+ 
+3 
+:  
+Classification:  
+Support Vector 
+Machines-k 
+NearestNeighb
+ourClassifiers- 
+Genetic 
+Algorithms- 
+Rough 
+Set 
+Approach- 
+Fuzzy 
+Set-
+Model 
+Evaluation and 
+SelectionAppr
+oaches 
+ 
+NA 
+Question and answer 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+9 
+Unit 
+ 
+3 
+:  
+Classification:  
+Techniques to 
+Improve 
+Classification 
+Accuracy. 
+ 
+Practical 
+Experiments / 
+Experient
+ial  
+Learning 
+Concept Mapping 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+
+--- PAGE 8 ---
+ 
+ 
+ 
+ 
+ 
+Experiential 
+Learning:  
+ 
+Ex 1: Write a 
+python 
+program to 
+classify data 
+using SVM 
+Ex 2:Write a 
+python 
+program 
+to 
+implement 
+a 
+Multilayer 
+Perceptron for 
+classification. 
+Ex 3: Write a 
+python 
+program 
+to 
+implement K-
+Nearest 
+Neighbor 
+Classification 
+Algorithm  
+ 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+10 
+Unit  4 :  
+Cluster 
+Analysis: 
+ Basic 
+Concepts and 
+Methods-
+Partitioning 
+Methods: 
+k-
+Means- 
+k-
+Medoids 
+NA 
+Quiz  
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+
+--- PAGE 9 ---
+ 
+ 
+ 
+ 
+ 
+11 
+Unit  4 :  
+Cluster 
+Analysis: 
+Hierarchical 
+Methods-
+Advanced 
+Cluster 
+Analysis: 
+Probabilistic 
+Model 
+Based 
+Clustering, 
+Clustering 
+HighDimensio
+nal 
+Data, 
+Clustering 
+Graph 
+and 
+Network Data. 
+NA 
+Question and answer 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+12 
+Unit  4 :  
+Cluster 
+Analysis: 
+Evaluation of 
+Clustering. 
+Practical 
+Experiments / 
+Experiential 
+Learning:  
+ 
+Ex 1:Write a 
+python 
+program to 
+implement K-
+Means 
+Clustering 
+Algorithm for 
+a Sample 
+dataset. (K=3) 
+Ex 2: Write a 
+python 
+program 
+to 
+implement K-
+Medoid 
+Clustering 
+Algorithm for 
+Experient
+ial  
+Learning 
+Concept Mapping 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+
+--- PAGE 10 ---
+ 
+ 
+ 
+ 
+ 
+a 
+Sample 
+dataset (K=3).  
+ 
+13 
+Unit  5 :  
+Outlier 
+Detection and 
+Data Mining 
+Applications: 
+Outliers 
+and 
+Outlier 
+Analysis-
+Outlier 
+Detection 
+Methods-
+ProximityBase
+d Approaches-
+ClusteringBase
+d Approaches 
+NA 
+Quiz  
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+14 
+Unit  5 :  
+Outlier 
+Detection and 
+Data Mining 
+Applications: 
+Detection 
+in 
+High 
+Dimensional 
+Data- 
+Data 
+Mining 
+Applications: 
+Recommender 
+Systems 
+Intrusion 
+Detection and 
+Prevention 
+NA 
+Question and answer 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+15 
+Unit  5 :  
+Outlier 
+Detection and 
+Data Mining 
+Applications: 
+Experient
+ial  
+Learning 
+Concept Mapping 
+T1: 
+Data 
+Mining: 
+Concepts 
+and 
+Techniques. 
+R1: Introduction to 
+Data Mining 
+R2: Data Mining and 
+Analysis: 
+
+--- PAGE 11 ---
+ 
+ 
+ 
+ 
+ 
+SECTION I 
+  
+SECTION III 
+Note: Refer to the syllabus entry in Espro (Except for  CO-PO strength mapping, rest of the 
+details will be populated based on your Espro Syllabus entry) 
+Mapping:  
+Outlier 
+Financial Data 
+Analysis. 
+ 
+Practical 
+Experiments / 
+Experiential 
+Learning:  
+ 
+Ex 1: Develop 
+a mini project 
+to apply data 
+mining 
+techniques 
+using python 
+to solve real 
+world 
+problems. 
+ 
+Fundamental concepts 
+and algorithms 
+R3: Data Mining –
+Practical 
+Machine 
+Learning Tools and 
+Techniques 
+R4: Data Science from 
+Scratch: 
+First 
+Principles with Python 
+
+--- PAGE 12 ---
+ 
+ 
+ 
+ 
+ 
+Programme Outcomes 
+CO1 
+CO2 
+CO3 
+CO4 
+CO5 
+PO1 
+1 
+1 
+3 
+3 
+3 
+PO2 
+1 
+2 
+3 
+3 
+3 
+PO3 
+- 
+- 
+3 
+3 
+3 
+PO4 
+- 
+- 
+- 
+3 
+3 
+PO5 
+- 
+- 
+- 
+- 
+3 
+PO6 
+- 
+- 
+- 
+- 
+- 
+PO7 
+- 
+- 
+- 
+- 
+- 
+PO8 
+- 
+- 
+- 
+- 
+- 
+PO9 
+- 
+- 
+- 
+- 
+- 
+PO10 
+- 
+- 
+- 
+- 
+- 
+PO11 
+- 
+- 
+- 
+- 
+- 
+PO12 
+- 
+- 
+- 
+- 
+- 
+NOTE: Please add /delete rows and columns where necessary to accommodate all the Programme 
+Outcomes and Programme Specific Outcomes. 
+Mapping of needs with the syllabus:  
+
+--- PAGE 13 ---
+ 
+ 
+ 
+ 
+ 
+Course Outcomes 
+Local, 
+Regional, 
+National, 
+Global 
+and 
+Development 
+Needs 
+(LRNG) 
+Cross-cutting 
+issues relating to 
+Professional 
+Ethics, Gender, 
+Human Values, 
+Environment and 
+Sustainability 
+Employability/E
+ntrepreneurship/ 
+Skill 
+Development 
+Sustainable 
+Development 
+Goals 
+CO1 
+Local 
+ 
+Skill 
+Development 
+ 
+CO2 
+Regional 
+ 
+Employability 
+ 
+CO3 
+National 
+ 
+Employability 
+ 
+CO4 
+Global 
+ 
+Employability 
+ 
+CO5 
+National 
+ 
+Skill 
+Development 
+ 
+Topic/Module Details 
+ 
+ 
+ 
+ 
+I  
+Scraping 
+the 
+Web, 
+Data 
+Preprocessing: 
+An Overview-
+Data 
+Cleaning- 
+Data 
+Integration-
+Data 
+Reduction 
+-
+Data 
+Transformatio
+n 
+- 
+Data 
+Mining: 
+Introduction to 
+Data 
+Mining- 
+Steps in Data 
+Mining Process-
+Major Issues in 
+Data 
+Mining-
+Working 
+with 
+Data 
+- 
+
+--- PAGE 14 ---
+ 
+ 
+ 
+ 
+ 
+II  
+Mining 
+Frequent 
+Patterns-Basic 
+Concepts-
+Efficient and 
+scalable 
+frequent item 
+set mining 
+methods: 
+Multidimensio
+nal Space- 
+Constraint-
+Based 
+Frequent 
+Pattern 
+Mining- 
+Mining High 
+Dimensional 
+Data and 
+Colossal 
+Patterns. 
+ 
+- 
+Apriori 
+Algorithm-FP-
+Growth 
+Algorithm- 
+Advanced 
+Pattern Mining: 
+Pattern Mining 
+in Multilevel 
+- 
+III  
+Basic 
+Concepts-
+Classification, 
+Rough 
+Set 
+Approach- 
+Fuzzy 
+Set-
+Model 
+Evaluation 
+and 
+SelectionAppr
+oaches- 
+Techniques to 
+Improve 
+Classification 
+Accuracy. 
+- 
+Decision 
+Tree 
+Induction-
+Advanced 
+classification 
+methods:Bayesi
+an 
+Belief 
+Networks-
+Classification 
+by 
+Backpropagatio
+n- 
+Support 
+Vector 
+Machines-k 
+NearestNeighbo
+urClassifiers- 
+Genetic 
+Algorithms 
+- 
+
+--- PAGE 15 ---
+ 
+ 
+ 
+ 
+ 
+IV  
+       Basic 
+Concepts and 
+Methods-
+Partitioning 
+Methods 
+Evaluation of 
+Clustering. 
+ 
+- 
+: k-Means- k-
+Medoids, 
+Hierarchical 
+Methods-
+Advanced 
+Cluster 
+Analysis: 
+Probabilistic 
+Model 
+Based 
+Clustering, 
+Clustering 
+HighDimension
+al 
+Data, 
+Clustering 
+Graph 
+and 
+Network Data. 
+- 
+V 
+Outliers and 
+Outlier 
+Analysis-
+Outlier 
+Detection 
+Methods 
+ 
+- 
+Proximity Based 
+Approaches-
+Clustering 
+Based 
+Approaches-
+Outlier 
+Detection 
+in 
+High 
+Dimensional 
+Data- 
+Data 
+Mining 
+Applications: 
+Recommender 
+Systems- 
+Intrusion 
+Detection 
+and 
+Prevention-
+Financial 
+Data 
+Analysis. 
+- 
+ 
+A template to map the Course Outcomes against the components of the assessment is given below: 
+
+--- PAGE 16 ---
+ 
+ 
+ 
+ 
+ 
+Course 
+Outcomes 
+Components of assessment (with the breakup of marks) 
+CAC-1- (10 
+marks) 
+CAC-2 (10 
+marks) 
+TEST-1 
+(50 
+marks) 
+CAC-3 (10 
+marks) 
+CAC-4 
+(10 
+marks) 
+TEST-2 
+(50 marks) 
+CO 1 
+10 
+NA 
+20 
+NA 
+NA 
+NA 
+CO 2 
+NA 
+10 
+20 
+NA 
+NA 
+NA 
+CO 3  
+NA 
+NA 
+10 
+NA 
+NA 
+10 
+CO 4 
+NA 
+NA 
+NA 
+10 
+NA 
+20 
+CO 5 
+NA 
+NA 
+NA 
+NA 
+10 
+20 
+ 
+Note: Add more rows if there are more COs 
+Assessment outline: 
+ 
+Components of assessment This will be populated from the syllabus  
+Components 
+CAC-1 
+CAC-2 
+TEST-1 
+CAC-3 
+CAC-4 
+TEST-2 
+Marks/Percentage 
+12 
+13 
+25 
+12 
+13 
+25 
+ 
+SECTION IV 
+CAC-1  
+Assignment Component:  Closed Book Test  
+ 
+  
+Assignment Description:  
+To evaluate the student’s knowledge on: 
+a. Comprehension of technical aspects of the Data Mining domain.  
+b. Demonstrate the capability to apply basics of Data Mining. 
+ 
+Evaluation Criteria/Rubric/s: 
+ 
+
+--- PAGE 17 ---
+ 
+ 
+ 
+ 
+ 
+Criteria 
+Area 
+of 
+Evaluation 
+Excellent 
+(9 to10) 
+Very Good 
+(7 to 8) 
+Good 
+(5 to 6) 
+Satisfactory 
+(3 to 4) 
+Needs 
+Improvement 
+(2 to 0) 
+Attempt 
+made 
+for 
+the 
+question(2.5 
+marks) 
+If the student 
+has attempted 
+the 
+entire 
+question 
+including 
+the 
+sub-categories 
+in the question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has attempted 
+the 
+partial 
+question 
+including 
+the 
+sub-categories 
+in the question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has attempted 
+the exact half 
+of the question 
+including 
+the 
+sub-categories 
+in the question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student
+has attempted
+only a part if
+the 
+given
+question 
+including 
+the
+sub-categories 
+in the question
+he/she 
+is
+eligible to get
+the marks of
+this range. 
+If the student has
+not attempted the
+entire/ any part
+question 
+including 
+the
+sub-categories in
+the 
+question
+he/she is eligible
+to get the marks
+of this range. 
+Correctness of 
+the answer and 
+relevance(2.5 
+marks) 
+If the question 
+attempted 
+by 
+the students is 
+entirely correct 
+when 
+considered all 
+the 
+sub-
+categories 
+in 
+the 
+question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the question 
+attempted 
+by 
+the students is 
+partially 
+correct 
+when 
+considered all 
+the 
+sub-
+categories 
+in 
+the 
+question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the question 
+attempted 
+by 
+the students is 
+exact half the 
+way 
+correct 
+when 
+considered all 
+the 
+sub-
+categories 
+in 
+the 
+question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the question
+attempted 
+by
+the students is
+correct only in
+a small part
+when 
+considered all
+the 
+sub-
+categories 
+in
+the 
+question
+he/she 
+is
+eligible to get
+the marks of
+this range. 
+If the question
+attempted by the
+students is not
+correct 
+when
+considered 
+all
+the 
+sub-
+categories in the
+question he/she
+is eligible to get
+the marks of this
+range. 
+Approach 
+followed 
+to 
+reach 
+the 
+solution(2.5 
+marks) 
+If the student 
+has 
+followed 
+the 
+expected 
+and 
+correct 
+approach 
+to 
+attempt 
+the 
+question right 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has 
+followed 
+the 
+partial 
+approach 
+to 
+attempt 
+the 
+question right 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has 
+followed 
+the 
+half 
+erroneous 
+approach 
+to 
+attempt 
+the 
+question right 
+he/she 
+is 
+eligible to the 
+marks of this 
+range. 
+If the student
+has 
+followed
+the 
+improper
+(partly) 
+approach 
+to
+attempt 
+the
+question right
+he/she 
+is
+eligible to get
+the marks of
+this range. 
+If the student has
+followed 
+the
+wrong approach
+to attempt the
+question 
+right
+he/she is eligible
+to get the marks
+of this range. 
+
+--- PAGE 18 ---
+ 
+ 
+ 
+ 
+ 
+Legibility(2.5 
+marks) 
+If the student 
+has attempted 
+the 
+question 
+with complete 
+correctness on 
+legible writing 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has attempted 
+the 
+question 
+with complete 
+correctness on 
+satisfactory 
+writing he/she 
+is eligible to 
+get the marks 
+of this range. 
+If the student 
+has attempted 
+the 
+question 
+with complete 
+correctness on 
+not satisfactory 
+writing he/she 
+is eligible to 
+get the marks 
+of this range. 
+If the student
+has attempted
+the 
+question
+with complete
+correctness on
+illegible 
+writing he/she
+is eligible to
+get the marks
+of this range. 
+If the student has
+attempted 
+the
+question 
+with
+complete 
+correctness 
+on
+poor 
+writing
+he/she is eligible
+to get the marks
+of this range. 
+ 
+ 
+CAC-2  
+Assignment Component:  Problem Solving Assignment 
+ 
+  
+Assignment Description:  
+To evaluate the student’s knowledge on: 
+a. Frequent pattern mining   
+ 
+Evaluation Criteria/Rubric/s: 
+Criteria 
+Excellent 
+ 9 to 10   
+Good 
+7 to 8  
+Fair 
+5 to 6 
+Needs 
+Improvement 
+0 to 4 
+Analysis 
+and 
+understanding(2  
+marks) 
+Demonstrates a 
+thorough 
+analysis of the 
+problem; 
+considers 
+all 
+relevant factors 
+and underlying 
+causes. 
+Provides a good 
+analysis of the 
+problem; 
+considers most 
+relevant factors 
+and underlying 
+causes. 
+Provides a basic 
+analysis of the 
+problem; 
+considers some 
+relevant factors 
+but 
+misses 
+others. 
+Provides 
+a 
+superficial 
+or 
+incorrect analysis 
+of the problem; 
+overlooks 
+important factors 
+and 
+underlying 
+causes. 
+Strategy 
+Development(2 
+marks) 
+Develops 
+a 
+clear, 
+logical, 
+and innovative 
+strategy to solve 
+the 
+problem; 
+considers 
+multiple 
+approaches. 
+Develops a clear 
+and 
+logical 
+strategy; 
+considers 
+alternative 
+approaches but 
+with minor gaps. 
+Develops a basic 
+strategy to solve 
+the 
+problem; 
+considers 
+limited 
+alternative 
+approaches. 
+Develops 
+an 
+unclear 
+or 
+illogical strategy; 
+fails to consider 
+alternative 
+approaches. 
+
+--- PAGE 19 ---
+ 
+ 
+ 
+ 
+ 
+Creativity 
+and 
+Innovation(2 
+marks) 
+Demonstrates 
+exceptional 
+creativity 
+and 
+innovation 
+in 
+solving 
+the 
+problem; thinks 
+outside the box. 
+Demonstrates 
+good creativity 
+and innovation; 
+some 
+original 
+ideas 
+and 
+approaches. 
+Demonstrates 
+some creativity 
+and innovation; 
+relies mostly on 
+conventional 
+ideas 
+and 
+approaches. 
+Lacks creativity 
+and 
+innovation; 
+relies solely on 
+conventional 
+ideas 
+and 
+approaches. 
+Critical 
+Thinking(2 
+marks) 
+Applies critical 
+thinking 
+consistently; 
+evaluates 
+all 
+possible 
+solutions 
+and 
+anticipates 
+potential issues. 
+Applies critical 
+thinking 
+frequently; 
+evaluates most 
+solutions 
+and 
+anticipates some 
+potential issues. 
+Applies critical 
+thinking 
+occasionally; 
+evaluates some 
+solutions 
+but 
+misses 
+others 
+and 
+potential 
+issues. 
+Lacks 
+critical 
+thinking; fails to 
+evaluate 
+solutions 
+thoroughly 
+or 
+anticipate 
+potential issues. 
+Evaluation(2 
+marks) 
+Thoroughly 
+evaluates 
+the 
+effectiveness of 
+the solution. 
+Evaluates 
+the 
+effectiveness of 
+the solution with 
+minor gaps. 
+Provides a basic 
+evaluation of the 
+solution’s 
+effectiveness. 
+Fails to evaluate 
+the 
+solution’s 
+effectiveness. 
+ 
+ 
+CAC-3  
+Assignment Component:  Closed Book Test  
+ 
+  
+Assignment Description:  
+To evaluate the student’s knowledge on: 
+a. Comprehension of technical aspects of the Clustering Techniques.  
+b. Demonstrate the capability to apply basics of Clustering techniques techniques. 
+ 
+Evaluation Criteria/Rubric/s: 
+Criteria 
+Area 
+of 
+Evaluation 
+Excellent  
+(9 to 10) 
+Very Good 
+(7 to 8) 
+Good 
+(5 to 6) 
+Satisfactory 
+(3 to 4) 
+Needs 
+Improvement 
+(0 to 2) 
+
+--- PAGE 20 ---
+ 
+ 
+ 
+ 
+ 
+Attempt 
+made 
+for 
+the 
+question(2.5 
+marks) 
+If the student 
+has attempted 
+the 
+entire 
+question 
+including 
+the 
+sub-categories 
+in the question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has attempted 
+the 
+partial 
+question 
+including 
+the 
+sub-categories 
+in the question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has attempted 
+the exact half 
+of the question 
+including 
+the 
+sub-categories 
+in the question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student
+has attempted
+only a part if
+the 
+given
+question 
+including 
+the
+sub-categories 
+in the question
+he/she 
+is
+eligible to get
+the marks of
+this range. 
+If the student has
+not attempted the
+entire/ any part
+question 
+including 
+the
+sub-categories in
+the 
+question
+he/she is eligible
+to get the marks
+of this range. 
+Correctness of 
+the answer and 
+relevance(2.5 
+marks) 
+If the question 
+attempted 
+by 
+the students is 
+entirely correct 
+when 
+considered all 
+the 
+sub-
+categories 
+in 
+the 
+question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the question 
+attempted 
+by 
+the students is 
+partially 
+correct 
+when 
+considered all 
+the 
+sub-
+categories 
+in 
+the 
+question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the question 
+attempted 
+by 
+the students is 
+exact half the 
+way 
+correct 
+when 
+considered all 
+the 
+sub-
+categories 
+in 
+the 
+question 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the question
+attempted 
+by
+the students is
+correct only in
+a small part
+when 
+considered all
+the 
+sub-
+categories 
+in
+the 
+question
+he/she 
+is
+eligible to get
+the marks of
+this range. 
+If the question
+attempted by the
+students is not
+correct 
+when
+considered 
+all
+the 
+sub-
+categories in the
+question he/she
+is eligible to get
+the marks of this
+range. 
+Approach 
+followed 
+to 
+reach 
+the 
+solution(2.5 
+marks) 
+If the student 
+has 
+followed 
+the 
+expected 
+and 
+correct 
+approach 
+to 
+attempt 
+the 
+question right 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has 
+followed 
+the 
+partial 
+approach 
+to 
+attempt 
+the 
+question right 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has 
+followed 
+the 
+half 
+erroneous 
+approach 
+to 
+attempt 
+the 
+question right 
+he/she 
+is 
+eligible to the 
+marks of this 
+range. 
+If the student
+has 
+followed
+the 
+improper
+(partly) 
+approach 
+to
+attempt 
+the
+question right
+he/she 
+is
+eligible to get
+the marks of
+this range. 
+If the student has
+followed 
+the
+wrong approach
+to attempt the
+question 
+right
+he/she is eligible
+to get the marks
+of this range. 
+
+--- PAGE 21 ---
+ 
+ 
+ 
+ 
+ 
+Legibility(2.5 
+marks) 
+If the student 
+has attempted 
+the 
+question 
+with complete 
+correctness on 
+legible writing 
+he/she 
+is 
+eligible to get 
+the marks of 
+this range. 
+If the student 
+has attempted 
+the 
+question 
+with complete 
+correctness on 
+satisfactory 
+writing he/she 
+is eligible to 
+get the marks 
+of this range. 
+If the student 
+has attempted 
+the 
+question 
+with complete 
+correctness on 
+not satisfactory 
+writing he/she 
+is eligible to 
+get the marks 
+of this range. 
+If the student
+has attempted
+the 
+question
+with complete
+correctness on
+illegible 
+writing he/she
+is eligible to
+get the marks
+of this range. 
+If the student has
+attempted 
+the
+question 
+with
+complete 
+correctness 
+on
+poor 
+writing
+he/she is eligible
+to get the marks
+of this range. 
+ 
+ 
+CAC-4  
+Assignment Component:  Video Presentation on any one topic from Unit 5 contents 
+ 
+  
+Assignment Description:  
+To evaluate the student’s skills on: 
+• Capacities to communicate information gained and answer queries behind them. 
+• Demonstrate the ability to evaluate, integrate, and apply appropriate information from 
+various sources to create cohesive and persuasive arguments. 
+ 
+Evaluation Criteria/Rubric/s: 
+Video 
+Presentation 
+Rubric 
+0 – 2 Marks 
+3 – 5 Marks 
+6 – 8 Marks 
+8 – 10 Marks 
+Beginning 
+Developing 
+Accomplished 
+Distinguished 
+Content 
+Does 
+the 
+presentation 
+cover 
+require 
+elements 
+thoroughly(2 
+marks) 
+Little to no 
+use 
+of 
+scholarly 
+information 
+in 
+the 
+development 
+of 
+the 
+program. 
+ 
+Program 
+does 
+not 
+address 
+all 
+Minimal 
+evidence of use 
+of 
+scholarly 
+information 
+in 
+the development 
+of the program 
+Program 
+addresses 
+all 
+required 
+elements 
+but 
+lacks 
+Program 
+demonstrates 
+moderate use of 
+scholarly 
+information in the 
+development 
+of 
+the program. 
+Program 
+addresses 
+all 
+required elements. 
+Some elements are 
+covered 
+with 
+Program 
+demonstrates 
+sound 
+use 
+of 
+scholarly 
+information in the 
+development 
+of 
+the program. All 
+required elements 
+are 
+covered 
+thoroughly. 
+
+--- PAGE 22 ---
+ 
+ 
+ 
+ 
+ 
+the required 
+elements 
+thoroughness 
+and clarity 
+excellent 
+clarity 
+and thoroughness 
+while others could 
+be improved. 
+Content 
+& 
+Organization 
+Is 
+the 
+topic 
+organized and 
+well 
+thought 
+out(2 marks) 
+ 
+Not 
+organized. 
+Difficult 
+to 
+follow.  Poor 
+quality 
+shows poor 
+effort. 
+Portions may be 
+poorly 
+organized.  Har
+d to follow the 
+progressions of 
+the 
+story.  
+Shows 
+some effort. 
+Fairly 
+well 
+organized.  Forma
+t 
+is 
+easy 
+to 
+follow.  
+Good 
+explanation shows 
+good effort. 
+Program shows a 
+continuous 
+progression 
+of 
+ideas and tells a 
+complete, 
+easily 
+followed 
+story.  
+Well 
+organized.  Excell
+ent, well thought 
+out 
+explanation 
+shows 
+superior 
+effort. 
+Usefulness  
+Does 
+your 
+video 
+stay 
+focus on an 
+informative 
+topic?  Does it 
+promote 
+the 
+use 
+of 
+technology to 
+inform 
+the 
+audience about 
+the 
+topic(2 
+marks) 
+Topic’s 
+usefulness is 
+in 
+question.  D
+oes 
+not 
+inform; does 
+not 
+stay 
+focused 
+on 
+the topic. 
+Topic provides 
+some 
+information and 
+uses 
+technology; has 
+problems 
+staying focused 
+on topic. 
+Topic is focused 
+and 
+informative; 
+promotes the use 
+of 
+computer 
+technology 
+to 
+create the video to 
+deliver 
+information. 
+Topic is focused 
+and 
+very 
+informative; 
+promotes the use 
+of 
+computer 
+technology 
+to 
+create the video 
+and makes others 
+want to use the 
+same 
+type 
+of 
+format 
+in 
+delivering 
+information to an 
+audience. 
+Creativity & 
+Elements 
+of 
+Design  
+Is your video 
+interesting?  D
+Use 
+of 
+design 
+elements 
+detracts from 
+video 
+and 
+Minimal use of 
+design 
+elements.  Mini
+mal 
+creativity 
+demonstrated. 
+Good 
+use 
+of 
+graphics 
+and/or 
+other 
+design 
+elements.  
+Good 
+creativity 
+Excellent sense of 
+design. Excellent 
+demonstration of 
+creativity. 
+Effective camera 
+
+--- PAGE 23 ---
+ 
+ 
+ 
+ 
+ 
+oes your video 
+demonstrate 
+creativity 
+in 
+presenting 
+your 
+information? Is 
+the video of 
+good 
+presentation 
+quality(2 
+marks) 
+from 
+content. Littl
+e 
+to 
+no 
+creativity 
+demonstrate
+d. 
+Sound 
+quality 
+is 
+poor. Video 
+may be out 
+of focus or 
+“shaky”. 
+No 
+transitions.  Sou
+nd is lacking or 
+inappropriate or 
+scratchy.  Some 
+pictures or video 
+clips may be out 
+of 
+focus 
+or 
+“shaky”. 
+demonstrated. 
+Some transitions 
+are 
+inappropriately 
+placed.  
+Sound 
+quality 
+is 
+OK.  
+Video 
+is 
+clear and in focus. 
+techniques 
+used 
+for the video and 
+pictures.  
+Video 
+and focus are of 
+good 
+quality.  
+Smooth 
+transitions 
+are 
+appropriate 
+and 
+aid in the delivery 
+of 
+the 
+presentation. 
+Overall 
+presentation  
+Presentation 
+meets 
+acceptable 
+time frame? 
+Evidence 
+of 
+participation 
+by all group 
+members? 
+Able 
+to 
+respond to the 
+questions 
+by 
+the 
+students 
+and instructor 
+with 
+ease(2 
+marks) 
+Poor topic;  
+Topic 
+falls 
+short 
+of 
+required 4–
+5-minute 
+time frame. 
+No evidence 
+of 
+participation 
+by all group 
+members. 
+Confusion-
+unable 
+to 
+respond 
+effectively to 
+questions. 
+Fair topic. Topic 
+does not meet 
+required 
+4–5-
+minute 
+time 
+frame. 
+ Weak 
+evidence 
+of 
+participation by 
+all 
+group 
+members. Some 
+difficulty 
+effectively 
+responding 
+to 
+questions. 
+Good Topic. Falls 
+within 4–5-minute 
+time frame but 
+could have used 
+more or less time 
+to 
+communicate 
+effectively.  Evide
+nce 
+of 
+participation by all 
+all-group 
+members.  
+Respond 
+to 
+questions. 
+Excellent 
+Topic. 
+Falls 
+within 
+assigned 4–5 min 
+time 
+frame. 
+Evidence of strong 
+participation by all 
+group members.  
+Responded easily 
+to questions. 
+ 

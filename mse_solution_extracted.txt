@@ -1,0 +1,702 @@
+=== PAGE 1 ===
+Subject code_ Page 1 of 9 
+ 
+ 
+CHRIST (DEEMED TO BE 
+UNIVERSITY), BANGALORE 
+DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING 
+TEST-1 EXAMINATION – JUNE 2026 
+M.TECH – III SEMESTER 
+ 
+Programme: M. Tech in CSE 
+ 
+ 
+ 
+ 
+ 
+                                                 
+Course Name: 
+Advanced Data Mining                                  
+  Max. Marks: 50         
+Course Code: MTCS344E01 
+ Time: 
+2hrs 
+ 
+General Instructions 
+• All rough work should be done in the answer script. Do not write or scribble in the 
+question paper except your register number.  
+• Verify the Course code / Course title & number of pages of questions in the question 
+paper.  
+• Make sure your mobile phone is switched off and placed at the designated place in the 
+hall. 
+• Malpractices will be viewed very seriously.  
+• Answers should be written on both sides of the paper in the answer booklet. No sheets 
+should be detached from the answer booklet.  
+• Answers without the question numbers clearly indicated will not be valued. No page 
+should be left blank in the middle of the answer booklet. 
+ 
+Course Outcomes (COs):    The students will be able to  
+CO1: Explain the basic fundamentals of Data mining and how to preprocess the data. (L2) 
+CO2: Apply appropriate association algorithm to mine frequent patterns. (L3) 
+CO3: Apply classification and related data mining techniques accurately and efficiently 
+using Python for computations. (L3) 
+CO4: Apply clustering and related data mining techniques accurately and efficiently using 
+Python for computations. (L3) 
+CO5: Develop a model using appropriate algorithm to solve real world problems. (L3) 
+ 
+ 
+SECTION A  
+Answer ALL the questions                               
+ 
+           4 X 10 marks = 40 Marks
+ 
+ 
+ 
+ 
+Q. No 
+Questions 
+CO RBT 
+1 
+Demonstrate the steps involved in Data Mining when viewed as a process of 
+knowledge discovery with a neat diagram. 
+ 
+In Data science, following are the steps:  
+◼ 1. Gathering data- The first step in the process is to gather data. It can 
+be structured, unstructured or semi-structured. 
+◼ 2. Data munging- Once you’ve got your data, it’s time to work on it. 
+The ‘raw’ data is cleaned and transformed into an understandable 
+format to get the most value out of it. This is probably the longest step. 
+Data scientists report data cleaning is about 80% of the time spent on 
+the whole process. 
+1 
+L2 
+Register No. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+=== PAGE 2 ===
+Subject code_ Page 2 of 9 
+ 
+3. Analyzing data- After cleaning the data, now is the time to analyze it by 
+applying algorithms and necessary statistical models. 
+◼ 4. Data visualization- When large amounts of data are to be dealt with, 
+building visualizations or graphs are the best way to explore and 
+communicate results. 
+◼ 5. Producing predictions- Machine learning algorithms help you 
+getting insights and predicting future trends. More than just creating 
+predictions, this step can help you build new products and processes. 
+◼ 6. Recapitulate- Insights help to develop more features so as to 
+continuously improve model outputs and deliver timely performance 
+and accurate results. 
+11
+Knowledge Discovery (KDD) Process
+◼
+This is a view from typical 
+database systems and data 
+warehousing communities
+◼
+Data mining plays an essential 
+role in the knowledge discovery 
+process
+Data Cleaning
+Data Integration
+Databases
+Data Warehouse
+Task-relevant Data
+Selection
+Data Mining
+Pattern Evaluation
+2 
+Discover the correlation coefficient (Pearson’s product moment coefficient) 
+from the following table. Are these two attributes positively or negatively 
+correlated? Compute their covariance. 
+Subject 
+AGE X 
+GLUCOSE 
+LEVEL Y 
+1 
+43 
+99 
+2 
+21 
+65 
+3 
+25 
+79 
+4 
+42 
+75 
+5 
+57 
+87 
+6 
+59 
+81 
+Step 1: Given Data 
+Subject Age (X) Glucose Level (Y) X² 
+Y² 
+XY 
+1 
+43 
+99 
+1849 9801 4257 
+2 
+21 
+65 
+441 
+4225 1365 
+3 
+25 
+79 
+625 
+6241 1975 
+4 
+42 
+75 
+1764 5625 3150 
+5 
+57 
+87 
+3249 7569 4959 
+6 
+59 
+81 
+3481 6561 4779 
+Total 
+247 
+486 
+11409 40022 20485 
+ 
+Step 2: Pearson Correlation Formula 
+𝑟=
+𝑛∑𝑋𝑌−∑𝑋∑𝑌
+√(𝑛∑𝑋2 −(∑𝑋)2)(𝑛∑𝑌2 −(∑𝑌)2)
+ 
+ 
+1 
+L2 
+
+=== PAGE 3 ===
+Subject code_ Page 3 of 9 
+ 
+Where: 
+• 
+𝑛= 6 
+• 
+∑𝑋= 247 
+• 
+∑𝑌= 486 
+• 
+∑𝑋2 = 11409 
+• 
+∑𝑌2 = 40022 
+• 
+∑𝑋𝑌= 20485 
+ 
+𝑟≈0.530 
+ 
+3 
+A database has five transactions as shown below. Let min_sup count = 
+3 and min_conf = 80%. 
+ 
+TID 
+ 
+Items bought    
+100 
+ 
+{f, a, c, d, g, i, m, p}  
+200 
+ 
+{a, b, c, f, l, m, o} 
+ 
+ 
+300 
+  
+{b, f, h, j, o, w} 
+ 
+ 
+400 
+  
+{b, c, k, s, p}  
+ 
+500 
+  
+{a, f, c, e, l, p, m, n}  
+Determine all frequent itemsets and strong association rule for the above 
+dataset using FP-Growth algorithm. 
+ 
+2 
+L3 
+  
+                                             
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+            
+                   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+               
+   
+            
+                        
+   
+                        
+               
+   
+                     
+               
+   
+                  
+      
+   
+               
+         
+   
+                        
+               
+  
+                  
+                          
+             
+  
+                      
+                    
+             
+  
+                        
+       
+                   
+
+=== PAGE 4 ===
+Subject code_ Page 4 of 9 
+ 
+4 
+Explain the process of mining the colossal patterns with pattern fusion method 
+with suitable example. 
+Definition 
+ 
+Colossal Frequent Patterns are very large frequent itemsets that contain a large 
+number of items and appear frequently in a transaction database. Instead of 
+generating all frequent itemsets (which can be exponentially many), Pattern 
+Fusion directly constructs large (colossal) patterns by merging smaller 
+frequent patterns. 
+ 
+Pattern Fusion is an efficient approach because it avoids generating all subsets 
+of a frequent itemset, thereby reducing computational complexity and 
+memory usage. 
+ 
+Need for Pattern Fusion 
+ 
+Traditional algorithms like Apriori and FP-Growth generate a huge number of 
+frequent itemsets before finding the largest ones. 
+ 
+For example, 
+ 
+Frequent Patterns 
+ 
+A 
+B 
+C 
+AB 
+AC 
+BC 
+ABC 
+ABCD 
+ABCDE 
+ 
+If the final objective is to obtain only ABCDE, generating all intermediate 
+patterns is inefficient. 
+ 
+2 
+L3 
+  
+                                                  
+ 
+                                                         
+ 
+                                                                 
+ 
+                                                           
+                        
+                        
+    
+                  
+ 
+   
+ 
+    
+ 
+               
+ 
+             
+ 
+            
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+            
+                   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+=== PAGE 5 ===
+Subject code_ Page 5 of 9 
+ 
+Pattern Fusion overcomes this problem by directly constructing larger 
+patterns. 
+ 
+Working Principle 
+ 
+The algorithm starts with small frequent patterns. 
+ 
+↓ 
+ 
+Find patterns having common items. 
+ 
+↓ 
+ 
+Fuse (merge) them into larger patterns. 
+ 
+↓ 
+ 
+Check support. 
+ 
+↓ 
+ 
+If frequent, continue fusion. 
+ 
+↓ 
+ 
+Stop when no further fusion is possible. 
+ 
+SECTION B  
+Answer ANY ONE question                            
+           1 X 10 marks = 10 Marks 
+                        
+Q. 
+No 
+Questions 
+CO RBT 
+5 
+The data in the table below represents the apparent temperature (ºF) vs. the relative 
+humidity (%) in a room whose actual temperature is 72 °F. Use this data to solve 
+the apparent temperature when the relative humidity reaches 110% using linear 
+regression. 
+Relative Humidity(%) 
+0 
+10 20 30 40 50 60 70 80 90 100 
+Apparent Temperature (ºF) 64 65 67 68 70 71 72 73 74 75 
+76 
+ 
+Intercept(b) = ( Σ y- a( Σ x))/  N 
+Slope  = (N  Σ xy-( Σ x)(  Σ y))/ (N Σ x^2-( Σ x)^2) 
+Step 1: N= 11 
+Step 2: xy 
+ 
+x 
+y 
+xy 
+x^2 
+0 
+64 
+0 
+0 
+10 
+65 
+650 
+100 
+20 
+67 
+1340 
+400 
+30 
+68 
+2040 
+900 
+40 
+70 
+2800 
+1600 
+50 
+71 
+3550 
+2500 
+3 
+L3 
+
+=== PAGE 6 ===
+Subject code_ Page 6 of 9 
+ 
+60 
+72 
+4320 
+3600 
+70 
+73 
+5110 
+4900 
+80 
+74 
+5920 
+6400 
+90 
+75 
+6750 
+8100 
+100 
+76 
+7600 
+10000 
+550 
+775 
+40080 
+38500 
+ 
+Slope= ((11 * 40080)– (550*775)) /  ((11*38500)- (302500)) 
+=0.116 
+ 
+Intercept = (775- 0.116*550)/11 = 64.65 
+ 
+Y= 64.65+0.116 * x 
+ 
+Y=64.65+0.116*110 
+=77.41 
+ 
+ 
+6 
+Explain the following with an example: 
+i. 
+Entropy 
+ii. 
+Information gain 
+iii. 
+Gini index 
+iv. 
+Tree Pruning 
+ 
+i. Entropy 
+Definition 
+Entropy is a measure of impurity or uncertainty in a dataset. It indicates how 
+mixed the class labels are. It is commonly used in decision tree algorithms such 
+as ID3. 
+Formula 
+𝐸𝑛𝑡𝑟𝑜𝑝𝑦(𝑆) = −∑𝑝𝑖
+𝑛
+𝑖=1
+log⁡2 𝑝𝑖 
+ 
+where: 
+• 
+𝑝𝑖= Probability of class 𝑖 
+Example 
+Consider a dataset of 10 students. 
+Class Count 
+Pass 6 
+Fail 4 
+Probability: 
+𝑃(𝑃𝑎𝑠𝑠) = 6
+10 = 0.6 
+𝑃(𝐹𝑎𝑖𝑙) = 4
+10 = 0.4 
+ 
+Entropy 
+= −(0.6log⁡2 0.6 + 0.4log⁡2 0.4) 
+= −(0.6 × −0.737 + 0.4 × −1.322) 
+= 0.971 
+ 
+3 
+L3 
+
+=== PAGE 7 ===
+Subject code_ Page 7 of 9 
+ 
+Interpretation 
+• 
+Entropy = 0 → Pure dataset (all belong to one class)  
+• 
+Entropy = 1 → Maximum impurity (equal distribution)  
+ 
+ii. Information Gain 
+Definition 
+Information Gain (IG) measures the reduction in entropy after splitting the 
+dataset based on an attribute. The attribute with the highest information gain is 
+selected as the decision node in the ID3 algorithm. 
+Formula 
+𝐼𝐺(𝑆, 𝐴) = 𝐸𝑛𝑡𝑟𝑜𝑝𝑦(𝑆) −∑∣𝑆𝑣∣
+∣𝑆∣𝐸𝑛𝑡𝑟𝑜𝑝𝑦(𝑆𝑣) 
+ 
+where: 
+• 
+𝑆= Original dataset  
+• 
+𝐴= Attribute  
+• 
+𝑆𝑣= Subset after split  
+Example 
+Suppose: 
+Original dataset entropy = 0.971 
+After splitting by Attendance: 
+Attendance Pass Fail Entropy 
+Yes 
+5 
+1 
+0.650 
+No 
+1 
+3 
+0.811 
+Weighted entropy 
+= 6
+10 (0.650) + 4
+10 (0.811) 
+= 0.390 + 0.324 
+= 0.714 
+ 
+Information Gain 
+𝐼𝐺= 0.971 −0.714 
+= 0.257 
+ 
+Interpretation 
+A higher information gain indicates a better attribute for splitting. 
+ 
+iii. Gini Index 
+Definition 
+The Gini Index is another measure of impurity used mainly in the CART 
+(Classification and Regression Tree) algorithm. 
+A lower Gini Index indicates a better split. 
+Formula 
+𝐺𝑖𝑛𝑖(𝑆) = 1 −∑𝑝𝑖
+2 
+ 
+Example 
+Using the same dataset: 
+Class Probability 
+Pass 0.6 
+Fail 0.4 
+Gini Index 
+
+=== PAGE 8 ===
+Subject code_ Page 8 of 9 
+ 
+= 1 −(0.6)2 −(0.4)2 
+= 1 −0.36 −0.16 
+= 0.48 
+ 
+Interpretation 
+• 
+Gini = 0 → Pure dataset  
+• 
+Higher Gini → More impurity  
+ 
+iv. Tree Pruning 
+Definition 
+Tree Pruning is the process of removing unnecessary branches from a 
+decision tree to reduce overfitting and improve the model's ability to generalize to 
+unseen data. 
+Types of Pruning 
+1. Pre-Pruning (Early Stopping) 
+The tree construction is stopped early based on conditions such as: 
+• 
+Maximum tree depth  
+• 
+Minimum number of samples per node  
+• 
+Minimum information gain  
+Example 
+          Age 
+         /   \ 
+      Young  Adult 
+        | 
+      Student 
+        | 
+      Pass 
+The algorithm stops expanding the tree once a stopping criterion is met. 
+ 
+2. Post-Pruning 
+First, a complete tree is built. Then branches that do not improve prediction 
+accuracy are removed. 
+Example 
+Before Pruning 
+            Age 
+           /    \ 
+      Young     Adult 
+      /   \       \ 
+   Student Non-Student Pass 
+    /   \ 
+ Pass  Pass 
+After Pruning 
+          Age 
+         /    \ 
+      Young   Adult 
+        |       | 
+      Pass    Pass 
+The unnecessary "Student" split is removed because it does not improve 
+classification. 
+Advantages of Tree Pruning 
+• 
+Reduces overfitting  
+• 
+Improves prediction accuracy  
+• 
+Produces simpler and more interpretable trees  
+
+=== PAGE 9 ===
+Subject code_ Page 9 of 9 
+ 
+• 
+Reduces computation time 
+ 
+ 
+ 
+R vi    B oom’    xo omy (RB ) L v   : 
+L1 – Remembering 
+L2 – Understanding 
+L3 – Applying 
+L4 – Analyzing 
+L5 – Evaluating 
+L6 – Creating 
+ 

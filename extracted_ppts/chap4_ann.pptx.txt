@@ -1,0 +1,132 @@
+=== Presentation: chap4_ann.pptx (33 slides) ===
+
+--- Slide 1 ---
+Data Mining
+Lecture Notes for Chapter 4 Artificial Neural NetworksIntroduction to Data Mining , 2nd EditionbyTan, Steinbach, Karpatne, Kumar
+
+--- Slide 2 ---
+Artificial Neural Networks (ANN)
+Basic Idea: A complex non-linear function can be learned as a composition of simple processing units ANN is a collection of simple processing units (nodes) that are connected by directed links (edges)Every node receives signals from incoming edges, performs computations, and transmits signals to outgoing edgesAnalogous to human brain where nodes are neurons and signals are electrical impulsesWeight of an edge determines the strength of connection between the nodesSimplest ANN: Perceptron (single neuron)
+
+--- Slide 3 ---
+Basic Architecture of Perceptron
+Learns linear decision boundariesRelated to logistic regression (activation function is sign instead of sigmoid)
+Activation Function
+
+--- Slide 4 ---
+Perceptron Example
+Output Y is 1 if at least two of the three inputs are equal to 1.
+
+--- Slide 5 ---
+Perceptron Example
+
+--- Slide 6 ---
+Perceptron Learning Rule
+Initialize the weights (w0, w1, …, wd)RepeatFor each training example (xi, yi) Compute   𝑦 𝑖   Update the weights: Until stopping condition is metk: iteration number;	𝜆: learning rate
+
+--- Slide 7 ---
+Perceptron Learning Rule
+Weight update formula:Intuition:Update weight based on error: e =  If y =  𝑦 , e=0: no update neededIf y >  𝑦 , e=2: weight must be increased (assuming Xij is positive) so  that   𝑦  will increaseIf y <  𝑦 , e=-2: weight must be decreased (assuming Xij is positive) so that   𝑦  will decrease
+
+--- Slide 8 ---
+Example of Perceptron Learning
+Weight updates over first epoch
+Weight updates over all epochs
+
+--- Slide 9 ---
+Perceptron Learning
+Since y is a linear combination of input variables, decision boundary is linear
+
+--- Slide 10 ---
+Nonlinearly Separable Data
+XOR Data
+For nonlinearly separable problems, perceptron learning algorithm will fail because no linear hyperplane can separate the data perfectly
+
+--- Slide 11 ---
+Multi-layer Neural Network
+More than one hidden layer of computing nodesEvery node in a hidden layer operates on activations from preceding layer and transmits activations forward to nodes of next layerAlso referred to as “feedforward neural networks”
+
+--- Slide 12 ---
+Multi-layer Neural Network
+Multi-layer neural networks with at least one hidden layer can solve any type of classification task involving nonlinear decision surfaces
+XOR Data
+
+--- Slide 13 ---
+Why Multiple Hidden Layers?
+Activations at hidden layers can be viewed as features extracted as functions of inputsEvery hidden layer represents a level of abstractionComplex features are compositions of simpler featuresNumber of layers is known as depth of ANNDeeper networks express complex hierarchy of features
+
+--- Slide 14 ---
+Multi-Layer Network Architecture
+Activation value at node i at layer l
+Activation Function
+Linear Predictor
+
+--- Slide 15 ---
+Activation Functions
+
+--- Slide 16 ---
+Learning Multi-layer Neural Network
+Can we apply perceptron learning rule to each node, including hidden nodes?Perceptron learning rule computes error term e = y -  𝑦  and updates weights accordinglyProblem: how to determine the true value of y for hidden nodes?Approximate error in hidden nodes by error in the output nodes Problem: Not clear how adjustment in the hidden nodes affect overall error No guarantee of convergence to optimal solution
+
+--- Slide 17 ---
+Gradient Descent
+Loss Function to measure errors across all training pointsGradient descent: Update parameters in the direction of “maximum descent” in the loss function across all pointsStochastic gradient descent (SGD): update the weight for every instance (minibatch SGD: update over min-batches of instances)
+𝜆: learning rate
+Squared Loss:
+
+--- Slide 18 ---
+Computing Gradients
+Using chain rule of differentiation (on a single instance):For sigmoid activation function:How can we compute  𝛿 𝑖 𝑙  for every layer?
+𝑦 = 𝑎 𝐿
+𝑖𝑗
+𝑖𝑗
+
+--- Slide 19 ---
+Backpropagation Algorithm
+At output layer L:At a hidden layer 𝑙 (using chain rule):Gradients at layer l can be computed using gradients at layer l + 1Start from layer L and “backpropagate” gradients to all previous layersUse gradient descent to update weights at every epochFor next epoch, use updated weights to compute loss fn. and its gradientIterate until convergence (loss does not change)
+
+--- Slide 20 ---
+Design Issues in ANN
+Number of nodes in input layer One input node per binary/continuous attributek or log2 k nodes for each categorical attribute with k valuesNumber of nodes in output layerOne output for binary class problemk or log2 k nodes for k-class problemNumber of hidden layers and nodes per layerInitial weights and biasesLearning rate, max. number of epochs, mini-batch size for mini-batch SGD, …
+
+--- Slide 21 ---
+Characteristics of ANN
+Multilayer ANN are universal approximators but could suffer from overfitting if the network is too largeNaturally represents a hierarchy of features at multiple levels of abstractionsGradient descent may converge to local minimumModel building is compute intensive, but testing is fast Can handle redundant and irrelevant attributes because weights are automatically learnt for all attributesSensitive to noise in training dataThis issue can be addressed by incorporating model complexity in the loss functionDifficult to handle missing attributes
+
+--- Slide 22 ---
+Deep Learning Trends
+Training deep neural networks (more than 5-10 layers) could only be possible in recent times with:Faster computing resources (GPU)Larger labeled training setsAlgorithmic Improvements in Deep LearningResponsive activation functions (e.g., RELU)Regularization (e.g., Dropout)Supervised pre-trainingUnsupervised pre-training (auto-encoders)Specialized ANN Architectures: Convolutional Neural Networks (for image data)Recurrent Neural Networks (for sequence data)Residual Networks (with skip connections)Generative Models: Generative Adversarial Networks
+
+--- Slide 23 ---
+Linear Discriminant Analysis (LDA)
+Linear Discriminant Analysis (LDA) is a supervised learning algorithm used for classification tasks in machine learning. It is a technique used to find a linear combination of features that best separates the classes in a dataset.LDA works by projecting the data onto a lower-dimensional space that maximizes the separation between the classes. It does this by finding a set of linear discriminants that maximize the ratio of between-class variance to within-class variance. In other words, it finds the directions in the feature space that best separate the different classes of data.LDA assumes that the data has a Gaussian distribution and that the covariance matrices of the different classes are equal. It also assumes that the data is linearly separable, meaning that a linear decision boundary can accurately classify the different classes.
+
+--- Slide 24 ---
+LDA has several advantages, including:	It is a simple and computationally efficient algorithm.It can work well even when the number of features is much larger than the number of training samples.It can handle multicollinearity (correlation between features) in the data.However, LDA also has some limitations, including:	It assumes that the data has a Gaussian distribution, which may not always be the case.It assumes that the covariance matrices of the different classes are equal, which may not be true in some datasets.It assumes that the data is linearly separable, which may not be the case for some datasets.It may not perform well in high-dimensional feature spaces.
+
+--- Slide 25 ---
+Linear Discriminant Analysis or Normal Discriminant Analysis or Discriminant Function Analysis is a dimensionality reduction technique that is commonly used for supervised classification problems. It is used for modelling differences in groups i.e. separating two or more classes. It is used to project the features in higher dimension space into a lower dimension space.
+
+--- Slide 26 ---
+Two criteria are used by LDA to create a new axis: Maximize the distance between means of the two classes.Minimize the variation within each class.
+
+--- Slide 27 ---
+
+
+--- Slide 28 ---
+w · xT + b = 0, w ∈ Rp, b ∈ Rw = μ1 − μ2
+
+--- Slide 29 ---
+
+
+--- Slide 30 ---
+Learning Vector Quantization ( or LVQ ) is a type of Artificial Neural Network which also inspired by biological models of neural systems. It is based on prototype supervised learning classification algorithm and trained its network through a competitive learning algorithm similar to Self Organizing Map. It can also deal with the multiclass classification problem. LVQ has two layers, one is the Input layer and the other one is the Output layer. The architecture of the Learning Vector Quantization with the number of classes in an input data and n number of input features for any sample is given below:
+
+--- Slide 31 ---
+
+
+--- Slide 32 ---
+Construct an LVQ net with five vector assigned to 2 clusters. Given vector along with classes are shown,Sol: First 2 vector are used as initial weight vector and remaining 3 vectors are i/p vectors.
+
+--- Slide 33 ---
+Initialize reference weight vector as:W1=[0 0 1 1]W2=[ 1 0 0 0]Let alpha = 0.1

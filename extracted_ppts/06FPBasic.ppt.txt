@@ -1,0 +1,472 @@
+=== Presentation: 06FPBasic.ppt (75 slides) ===
+
+--- Slide 1 ---
+1
+1
+Data Mining:  Concepts and Techniques (3rd ed.)— Chapter 6 —
+Jiawei Han, Micheline Kamber, and Jian PeiUniversity of Illinois at Urbana-Champaign &Simon Fraser University©2011 Han, Kamber & Pei.  All rights reserved.
+
+--- Slide 2 ---
+2
+Chapter 5: Mining Frequent Patterns, Association and Correlations: Basic Concepts and Methods
+Basic ConceptsFrequent Itemset Mining Methods Which Patterns Are Interesting?—Pattern Evaluation MethodsSummary
+
+--- Slide 3 ---
+3
+What Is Frequent Pattern Analysis?
+Frequent pattern: a pattern (a set of items, subsequences, substructures, etc.) that occurs frequently in a data set First proposed by Agrawal, Imielinski, and Swami [AIS93] in the context of frequent itemsets and association rule miningMotivation: Finding inherent regularities in dataWhat products were often purchased together?— Beer and diapers?!What are the subsequent purchases after buying a PC?What kinds of DNA are sensitive to this new drug?Can we automatically classify web documents?ApplicationsBasket data analysis, cross-marketing, catalog design, sale campaign analysis, Web log (click stream) analysis, and DNA sequence analysis.
+
+--- Slide 4 ---
+4
+Why Is Freq. Pattern Mining Important?
+Freq. pattern: An intrinsic and important property of datasets Foundation for many essential data mining tasksAssociation, correlation, and causality analysisSequential, structural (e.g., sub-graph) patternsPattern analysis in spatiotemporal, multimedia, time-series, and stream data Classification: discriminative, frequent pattern analysisCluster analysis: frequent pattern-based clusteringData warehousing: iceberg cube and cube-gradient Semantic data compression: fasciclesBroad applications
+
+--- Slide 5 ---
+5
+Basic Concepts: Frequent Patterns
+itemset: A set of one or more itemsk-itemset X = {x1, …, xk}(absolute) support, or, support count of X: Frequency or occurrence of an itemset X(relative) support, s, is the fraction of transactions that contains X (i.e., the probability that a transaction contains X)An itemset X is frequent if X’s support is no less than a minsup threshold
+
+--- Slide 6 ---
+6
+Basic Concepts: Association Rules
+Find all the rules X  Y with minimum support and confidencesupport, s, probability that a transaction contains X  Yconfidence, c, conditional probability that a transaction having X also contains YLet  minsup = 50%, minconf = 50%Freq. Pat.: Beer:3, Nuts:3, Diaper:4, Eggs:3, {Beer, Diaper}:3
+Customerbuys diaper
+Customerbuys both
+Customerbuys beer
+Nuts, Eggs, Milk
+40
+Nuts, Coffee, Diaper, Eggs, Milk
+50
+Beer, Diaper, Eggs
+30
+Beer, Coffee, Diaper
+20
+Beer, Nuts, Diaper
+10
+Items bought
+Tid
+Association rules: (many more!)Beer  Diaper  (60%, 100%)Diaper  Beer  (60%, 75%)
+
+--- Slide 7 ---
+7
+Then confidence is defined as:
+Confidence(A⇒B)=Support(A∪B) / Support(A)​
+
+--- Slide 8 ---
+8
+Closed Patterns and Max-Patterns
+A long pattern contains a combinatorial number of sub-patterns, e.g., {a1, …, a100} contains (1001) + (1002) + … + (110000) = 2100 – 1 = 1.27*1030 sub-patterns!Solution: Mine closed patterns and max-patterns insteadAn itemset X is closed if X is frequent and there exists no super-pattern Y כ X, with the same support as X (proposed by Pasquier, et al. @ ICDT’99) An itemset X is a max-pattern if X is frequent and there exists no frequent super-pattern Y כ X (proposed by Bayardo @ SIGMOD’98)Closed pattern is a lossless compression of freq. patternsReducing the # of patterns and rules
+
+--- Slide 9 ---
+An itemset is closed if none of its immediate supersets has the same support count (frequency in the dataset) as the itemset itself.OrA frequent itemset is closed if there is no superset with the same frequency.
+9
+
+--- Slide 10 ---
+10
+Suppose you have a transaction database:
+
+--- Slide 11 ---
+Support(A) = 3Support(A,B) = 2Support(A,C) = 2Support(B,C) = 2Support(A,B,C) = 1Now check if an itemset is closed:A is not closed because both (A,B) and (A,C) are supersets of A, and they also have support 2, which is less than A’s 3 → So A is closedA,B is closed because (A,B,C) has a lower support (1), so it doesn’t invalidate A,B’s closure.
+11
+
+--- Slide 12 ---
+A maximal frequent itemset is a frequent itemset that has no frequent superset.
+12
+Consider transactions:Assume min support = 2Support counts:A: 3, B: 3, C: 3AB: 2, AC: 2, BC: 2ABC: 1 (not frequent)
+
+--- Slide 13 ---
+Assume min support = 2Support counts:A: 3, B: 3, C: 3AB: 2, AC: 2, BC: 2ABC: 1 (not frequent)So, frequent itemsets:A, B, CAB, AC, BCNow, identify maximal frequent itemsets:AB ✅ (no frequent superset — ABC is not frequent)AC ✅BC ✅So, Maximal itemsets = {AB, AC, BC}
+13
+
+--- Slide 14 ---
+14
+Closed Patterns and Max-Patterns
+Exercise.  DB = {<a1, …, a100>, < a1, …, a50>} Min_sup = 1.What is the set of closed itemset?<a1, …, a100>: 1< a1, …, a50>: 2What is the set of max-pattern?<a1, …, a100>: 1What is the set of all patterns?!!
+
+--- Slide 15 ---
+15
+Computational Complexity of Frequent Itemset Mining
+How many itemsets are potentially to be generated in the worst case?The number of frequent itemsets to be generated is senstive to the minsup thresholdWhen minsup is low, there exist potentially an exponential number of frequent itemsetsThe worst case: MN where M: # distinct items, and N: max length of transactionsThe worst case complexty vs. the expected probabilityEx. Suppose Walmart has 104 kinds of products The chance to pick up one product 10-4The chance to pick up a particular set of 10 products: ~10-40What is the chance this particular set of 10 products to be frequent 103 times in 109 transactions?
+
+--- Slide 16 ---
+16
+Chapter 5: Mining Frequent Patterns, Association and Correlations: Basic Concepts and Methods
+Basic ConceptsFrequent Itemset Mining Methods Which Patterns Are Interesting?—Pattern Evaluation MethodsSummary
+
+--- Slide 17 ---
+17
+Scalable Frequent Itemset Mining Methods
+Apriori: A Candidate Generation-and-Test ApproachImproving the Efficiency of AprioriFPGrowth:  A Frequent Pattern-Growth ApproachECLAT: Frequent Pattern Mining with Vertical Data Format
+
+--- Slide 18 ---
+18
+The Downward Closure Property and Scalable Mining Methods
+The downward closure property of frequent patternsAny subset of a frequent itemset must be frequentIf {beer, diaper, nuts} is frequent, so is {beer, diaper}i.e., every transaction having {beer, diaper, nuts} also contains {beer, diaper} Scalable mining methods: Three major approachesApriori (Agrawal & Srikant@VLDB’94)Freq. pattern growth (FPgrowth—Han, Pei & Yin @SIGMOD’00)Vertical data format approach (Charm—Zaki & Hsiao @SDM’02)
+
+--- Slide 19 ---
+19
+Apriori: A Candidate Generation & Test Approach
+Apriori pruning principle: If there is any itemset which is infrequent, its superset should not be generated/tested! (Agrawal & Srikant @VLDB’94, Mannila, et al. @ KDD’ 94)Method: Initially, scan DB once to get frequent 1-itemsetGenerate length (k+1) candidate itemsets from length k frequent itemsetsTest the candidates against DBTerminate when no frequent or candidate set can be generated
+
+--- Slide 20 ---
+20
+The Apriori Algorithm—An Example
+Database TDB
+1st scan
+C1
+L1
+L2
+C2
+C2
+2nd scan
+C3
+L3
+3rd scan
+Supmin = 2
+
+--- Slide 21 ---
+21
+The Apriori Algorithm (Pseudo-Code)
+Ck: Candidate itemset of size kLk : frequent itemset of size kL1 = {frequent items};for (k = 1; Lk !=; k++) do begin    Ck+1 = candidates generated from Lk;    for each transaction t in database do  increment the count of all candidates in Ck+1 that are contained in t    Lk+1  = candidates in Ck+1 with min_support    endreturn k Lk;
+
+--- Slide 22 ---
+22
+Implementation of Apriori
+How to generate candidates?Step 1: self-joining LkStep 2: pruningExample of Candidate-generationL3={abc, abd, acd, ace, bcd}Self-joining: L3*L3abcd from abc and abdacde from acd and acePruning:acde is removed because ade is not in L3C4 = {abcd}
+
+--- Slide 23 ---
+23
+How to Count Supports of Candidates?
+Why counting supports of candidates a problem?The total number of candidates can be very huge One transaction may contain many candidatesMethod:Candidate itemsets are stored in a hash-treeLeaf node of hash-tree contains a list of itemsets and countsInterior node contains a hash tableSubset function: finds all the candidates contained in a transaction
+
+--- Slide 24 ---
+24
+Counting Supports of Candidates Using Hash Tree
+Transaction: 1 2 3 5 6
+1 + 2 3 5 6
+1 2 + 3 5 6
+1 3 + 5 6
+
+--- Slide 25 ---
+25
+Candidate Generation: An SQL Implementation
+SQL Implementation of candidate generationSuppose the items in Lk-1 are listed in an orderStep 1: self-joining Lk-1 insert into Ckselect p.item1, p.item2, …, p.itemk-1, q.itemk-1from Lk-1 p, Lk-1 qwhere p.item1=q.item1, …, p.itemk-2=q.itemk-2, p.itemk-1 < q.itemk-1Step 2: pruningforall itemsets c in Ck doforall (k-1)-subsets s of c doif (s is not in Lk-1) then delete c from CkUse object-relational extensions like UDFs, BLOBs, and Table functions for efficient implementation [See: S. Sarawagi, S. Thomas, and R. Agrawal. Integrating association rule mining with relational database systems: Alternatives and implications. SIGMOD’98]
+
+--- Slide 26 ---
+26
+Scalable Frequent Itemset Mining Methods
+Apriori: A Candidate Generation-and-Test ApproachImproving the Efficiency of AprioriFPGrowth:  A Frequent Pattern-Growth ApproachECLAT: Frequent Pattern Mining with Vertical Data FormatMining Close Frequent Patterns and Maxpatterns
+
+--- Slide 27 ---
+27
+Further Improvement of the Apriori Method
+Major computational challengesMultiple scans of transaction databaseHuge number of candidatesTedious workload of support counting for candidatesImproving Apriori: general ideasReduce passes of transaction database scansShrink number of candidatesFacilitate support counting of candidates
+
+--- Slide 28 ---
+Hash-based technique (hashing itemsets into corresponding buckets): A hash-based technique can be used to reduce the size of the candidate k-itemsets, Ck, for k > 1.
+28
+
+--- Slide 29 ---
+Transaction reduction (reducing the number of transactions scanned in future iterations): A transaction that does not contain any frequent k-itemsets cannot contain any frequent (k +1)-itemsets. Therefore, such a transaction can be marked or removed from further consideration because subsequent database scans for j-itemsets, where j >k, will not need to consider such a transaction.
+29
+
+--- Slide 30 ---
+Partitioning (partitioning the data to find candidate itemsets): A partitioning tech nique can be used that requires just two database scans to mine the frequent itemsetsSampling (mining on a subset of the given data): The basic idea of the sampling approach is to pick a random sample S of the given data D, and then search for frequent itemsets in S instead of D.
+30
+
+--- Slide 31 ---
+Dynamic itemset counting (adding candidate itemsets at different points during a scan):
+31
+
+--- Slide 32 ---
+Partition: Scan Database Only Twice
+Any itemset that is potentially frequent in DB must be frequent in at least one of the partitions of DBScan 1: partition database and find local frequent patternsScan 2: consolidate global frequent patternsA. Savasere, E. Omiecinski and S. Navathe, VLDB’95
+DB1
+DB2
+DBk
++
+=       DB
++
++
+sup1(i) < σDB1
+sup2(i) < σDB2
+supk(i) < σDBk
+sup(i) < σDB
+
+--- Slide 33 ---
+33
+DHP: Reduce the Number of Candidates
+A k-itemset whose corresponding hashing bucket count is below the threshold cannot be frequentCandidates: a, b, c, d, eHash entries{ab, ad, ae}{bd, be, de} …Frequent 1-itemset: a, b, d, eab is not a candidate 2-itemset if the sum of count of {ab, ad, ae} is below support thresholdJ. Park, M. Chen, and P. Yu. An effective hash-based algorithm for mining association rules. SIGMOD’95
+Hash Table
+
+--- Slide 34 ---
+34
+Sampling for Frequent Patterns
+Select a sample of original database, mine frequent patterns within sample using AprioriScan database once to verify frequent itemsets found in sample, only borders of closure of frequent patterns are checkedExample: check abcd instead of ab, ac, …, etc.Scan database again to find missed frequent patternsH. Toivonen. Sampling large databases for association rules. In VLDB’96
+
+--- Slide 35 ---
+35
+DIC: Reduce Number of Scans
+ABCD
+ABC
+ABD
+ACD
+BCD
+AB
+AC
+BC
+AD
+BD
+CD
+A
+B
+C
+D
+{}
+Itemset lattice
+Once both A and D are determined frequent, the counting of AD beginsOnce all length-2 subsets of BCD are determined frequent, the counting of BCD begins
+Transactions
+1-itemsets
+2-itemsets
+…
+Apriori
+1-itemsets
+2-items
+3-items
+DIC
+S. Brin R. Motwani, J. Ullman, and S. Tsur. Dynamic itemset counting and implication rules for market basket data. SIGMOD’97
+
+--- Slide 36 ---
+36
+Scalable Frequent Itemset Mining Methods
+Apriori: A Candidate Generation-and-Test ApproachImproving the Efficiency of AprioriFPGrowth:  A Frequent Pattern-Growth ApproachECLAT: Frequent Pattern Mining with Vertical Data FormatMining Close Frequent Patterns and Maxpatterns
+
+--- Slide 37 ---
+37
+Pattern-Growth Approach: Mining Frequent Patterns Without Candidate Generation
+Bottlenecks of the Apriori approachBreadth-first (i.e., level-wise) searchCandidate generation and testOften generates a huge number of candidatesThe FPGrowth Approach (J. Han, J. Pei, and Y. Yin, SIGMOD’ 00)Depth-first searchAvoid explicit candidate generationMajor philosophy: Grow long patterns from short ones using local frequent items only“abc” is a frequent patternGet all transactions having “abc”, i.e., project DB on abc: DB|abc“d” is a local frequent item in DB|abc  abcd is a frequent pattern
+
+--- Slide 38 ---
+38
+Construct FP-tree from a Transaction Database
+min_support = 3
+TID		Items bought	  (ordered) frequent items100		{f, a, c, d, g, i, m, p}	{f, c, a, m, p}200		{a, b, c, f, l, m, o}		{f, c, a, b, m}300	 	{b, f, h, j, o, w}		{f, b}400	 	{b, c, k, s, p}		{c, b, p}500	 	{a, f, c, e, l, p, m, n}	{f, c, a, m, p}
+Scan DB once, find frequent 1-itemset (single item pattern)Sort frequent items in frequency descending order, f-listScan DB again, construct FP-tree
+F-list = f-c-a-b-m-p
+
+--- Slide 39 ---
+39
+Partition Patterns and Databases
+Frequent patterns can be partitioned into subsets according to f-listF-list = f-c-a-b-m-pPatterns containing pPatterns having m but no p…Patterns having c but no a nor b, m, pPattern fCompleteness and non-redundency
+
+--- Slide 40 ---
+40
+Find Patterns Having P From P-conditional Database
+Starting at the frequent item header table in the FP-treeTraverse the FP-tree by following the link of each frequent item pAccumulate all of transformed prefix paths of item p to form p’s conditional pattern base
+Conditional pattern basesitem	cond. pattern basec	f:3a	fc:3b	fca:1, f:1, c:1m	fca:2, fcab:1p	fcam:2, cb:1
+
+--- Slide 41 ---
+41
+From Conditional Pattern-bases to Conditional FP-trees
+For each pattern-baseAccumulate the count for each item in the baseConstruct the FP-tree for the frequent items of the pattern base
+m-conditional pattern base:fca:2, fcab:1
+All frequent patterns relate to mm, fm, cm, am, fcm, fam, cam, fcam
+
+
+{}
+f:4
+c:1
+b:1
+p:1
+b:1
+c:3
+a:3
+b:1
+m:2
+p:2
+m:1
+Header TableItem  frequency  head  f	4c	4a	3b	3m	3p	3
+
+--- Slide 42 ---
+42
+Recursion: Mining Each Conditional FP-tree
+Cond. pattern base of “am”: (fc:3)
+Cond. pattern base of “cm”: (f:3)
+{}
+f:3
+cm-conditional FP-tree
+Cond. pattern base of “cam”: (f:3)
+{}
+f:3
+cam-conditional FP-tree
+
+--- Slide 43 ---
+43
+A Special Case: Single Prefix Path in FP-tree
+Suppose a (conditional) FP-tree T has a shared single prefix-path PMining can be decomposed into two partsReduction of the single prefix path into one nodeConcatenation of the mining results of the two parts
+
++
+
+--- Slide 44 ---
+44
+Benefits of the FP-tree Structure
+Completeness Preserve complete information for frequent pattern miningNever break a long pattern of any transactionCompactnessReduce irrelevant info—infrequent items are goneItems in frequency descending order: the more frequently occurring, the more likely to be sharedNever be larger than the original database (not count node-links and the count field)
+
+--- Slide 45 ---
+45
+The Frequent Pattern Growth Mining Method
+Idea: Frequent pattern growthRecursively grow frequent patterns by pattern and database partitionMethod For each frequent item, construct its conditional pattern-base, and then its conditional FP-treeRepeat the process on each newly created conditional FP-tree Until the resulting FP-tree is empty, or it contains only one path—single path will generate all the combinations of its sub-paths, each of which is a frequent pattern
+
+--- Slide 46 ---
+46
+Scaling FP-growth by Database Projection
+What about if FP-tree cannot fit in memory?DB projectionFirst partition a database into a set of projected DBsThen construct and mine FP-tree for each projected DBParallel projection vs. partition projection techniquesParallel projectionProject the DB in parallel for each frequent itemParallel projection is space costlyAll the partitions can be processed in parallelPartition projectionPartition the DB based on the ordered frequent itemsPassing the unprocessed parts to the subsequent partitions
+
+--- Slide 47 ---
+47
+Partition-Based Projection
+Parallel projection needs a lot of disk space Partition projection saves it
+
+--- Slide 48 ---
+Performance of FPGrowth in Large Datasets
+FP-Growth vs. Apriori
+48
+Data set T25I20D10K
+Data set T25I20D100K
+FP-Growth vs. Tree-Projection
+
+--- Slide 49 ---
+49
+Advantages of the Pattern Growth Approach
+Divide-and-conquer: Decompose both the mining task and DB according to the frequent patterns obtained so farLead to focused search of smaller databasesOther factorsNo candidate generation, no candidate testCompressed database: FP-tree structureNo repeated scan of entire database Basic ops: counting local freq items and building sub FP-tree, no pattern search and matchingA good open-source implementation and refinement of FPGrowthFPGrowth+ (Grahne and J. Zhu, FIMI'03)
+
+--- Slide 50 ---
+50
+Further Improvements of Mining Methods
+AFOPT (Liu, et al. @ KDD’03)A “push-right” method for mining condensed frequent pattern (CFP) tree Carpenter (Pan, et al. @ KDD’03)Mine data sets with small rows but numerous columnsConstruct a row-enumeration tree for efficient miningFPgrowth+ (Grahne and Zhu, FIMI’03)Efficiently Using Prefix-Trees in Mining Frequent Itemsets, Proc. ICDM'03 Int. Workshop on Frequent Itemset Mining Implementations (FIMI'03),  Melbourne, FL, Nov. 2003TD-Close (Liu, et al, SDM’06)
+
+--- Slide 51 ---
+51
+Extension of Pattern Growth Mining Methodology
+Mining closed frequent itemsets and max-patternsCLOSET (DMKD’00), FPclose, and FPMax (Grahne & Zhu, Fimi’03)Mining sequential patternsPrefixSpan (ICDE’01), CloSpan (SDM’03), BIDE (ICDE’04)Mining graph patternsgSpan (ICDM’02), CloseGraph (KDD’03)Constraint-based mining of frequent patternsConvertible constraints (ICDE’01), gPrune (PAKDD’03)Computing iceberg data cubes with complex measures H-tree, H-cubing, and Star-cubing (SIGMOD’01, VLDB’03)Pattern-growth-based ClusteringMaPle (Pei, et al., ICDM’03) Pattern-Growth-Based ClassificationMining frequent and discriminative patterns (Cheng, et al, ICDE’07)
+
+--- Slide 52 ---
+52
+Scalable Frequent Itemset Mining Methods
+Apriori: A Candidate Generation-and-Test ApproachImproving the Efficiency of AprioriFPGrowth:  A Frequent Pattern-Growth ApproachECLAT: Frequent Pattern Mining with Vertical Data FormatMining Close Frequent Patterns and Maxpatterns
+
+--- Slide 53 ---
+53
+ECLAT: Mining by Exploring Vertical Data Format
+Vertical format: t(AB) = {T11, T25, …}tid-list: list of trans.-ids containing an itemset Deriving frequent patterns based on vertical intersectionst(X) = t(Y): X and Y always happen togethert(X)  t(Y): transaction having X always has YUsing diffset to accelerate miningOnly keep track of differences of tidst(X) = {T1, T2, T3},  t(XY) = {T1, T3} Diffset (XY, X) = {T2}Eclat  (Zaki et al. @KDD’97)Mining Closed patterns using vertical format:  CHARM (Zaki & Hsiao@SDM’02)
+
+--- Slide 54 ---
+54
+Scalable Frequent Itemset Mining Methods
+Apriori: A Candidate Generation-and-Test ApproachImproving the Efficiency of AprioriFPGrowth:  A Frequent Pattern-Growth ApproachECLAT: Frequent Pattern Mining with Vertical Data FormatMining Close Frequent Patterns and Maxpatterns
+
+--- Slide 55 ---
+Mining Frequent Closed Patterns: CLOSET
+Flist: list of all frequent items in support ascending orderFlist: d-a-f-e-cDivide search spacePatterns having dPatterns having d but no a, etc.Find frequent closed pattern recursivelyEvery transaction having d also has cfa  cfad is a frequent closed patternJ. Pei, J. Han & R. Mao. “CLOSET: An Efficient Algorithm for Mining Frequent Closed Itemsets", DMKD'00.
+Min_sup=2
+
+--- Slide 56 ---
+CLOSET+: Mining Closed Itemsets by Pattern-Growth
+Itemset merging: if Y appears in every occurrence of X, then Y is merged with XSub-itemset pruning: if Y כ X, and sup(X) = sup(Y), X and all of X’s descendants in the set enumeration tree can be prunedHybrid tree projectionBottom-up physical tree-projectionTop-down pseudo tree-projectionItem skipping: if a local frequent item has the same support in several header tables at different levels, one can prune it from the header table at higher levelsEfficient subset checking
+
+--- Slide 57 ---
+MaxMiner: Mining Max-Patterns
+1st scan: find frequent itemsA, B, C, D, E2nd scan: find support for AB, AC, AD, AE, ABCDEBC, BD, BE, BCDECD, CE, CDE, DESince BCDE is a max-pattern, no need to check BCD, BDE, CDE in later scanR. Bayardo. Efficiently mining long patterns from databases. SIGMOD’98
+Potential max-patterns
+
+--- Slide 58 ---
+CHARM: Mining by Exploring Vertical Data Format
+Vertical format: t(AB) = {T11, T25, …}tid-list: list of trans.-ids containing an itemset Deriving closed patterns based on vertical intersectionst(X) = t(Y): X and Y always happen togethert(X)  t(Y): transaction having X always has YUsing diffset to accelerate miningOnly keep track of differences of tidst(X) = {T1, T2, T3},  t(XY) = {T1, T3} Diffset (XY, X) = {T2}Eclat/MaxEclat (Zaki et al. @KDD’97), VIPER(P. Shenoy et al.@SIGMOD’00), CHARM (Zaki & Hsiao@SDM’02)
+
+--- Slide 59 ---
+59
+Visualization of Association Rules: Plane Graph
+
+--- Slide 60 ---
+60
+Visualization of Association Rules: Rule Graph
+
+--- Slide 61 ---
+61
+Visualization of Association Rules (SGI/MineSet 3.0)
+
+--- Slide 62 ---
+62
+Chapter 5: Mining Frequent Patterns, Association and Correlations: Basic Concepts and Methods
+Basic ConceptsFrequent Itemset Mining Methods Which Patterns Are Interesting?—Pattern Evaluation MethodsSummary
+
+--- Slide 63 ---
+63
+Interestingness Measure: Correlations (Lift)
+play basketball   eat cereal [40%, 66.7%]  is misleadingThe overall % of students eating cereal is 75% > 66.7%.play basketball   not eat cereal [20%, 33.3%] is more accurate, although with lower support and confidenceMeasure of dependent/correlated events: lift
+
+--- Slide 64 ---
+64
+Are lift and 2  Good Measures of Correlation?
+“Buy walnuts   buy milk [1%, 80%]”  is misleading if 85% of customers buy milkSupport and confidence are not good to indicate correlationsOver 20 interestingness measures have been proposed  (see Tan, Kumar, Sritastava @KDD’02)Which are good ones?
+
+--- Slide 65 ---
+65
+Null-Invariant Measures
+
+--- Slide 66 ---
+October 3, 2026
+Data Mining: Concepts and Techniques
+66
+Comparison of Interestingness Measures
+Null-(transaction) invariance is crucial for correlation analysisLift and 2 are not null-invariant5 null-invariant measures
+Null-transactions w.r.t. m and c
+Null-invariant
+Subtle: They disagree
+Kulczynski measure (1927)
+
+--- Slide 67 ---
+67
+Analysis of DBLP Coauthor Relationships
+Advisor-advisee relation: Kulc: high, coherence: low, cosine: middle
+Recent DB conferences, removing balanced associations, low sup, etc.
+Tianyi Wu, Yuguo Chen and Jiawei Han, “Association Mining in Large Databases: A Re-Examination of Its Measures”, Proc. 2007 Int. Conf. Principles and Practice of Knowledge Discovery in Databases (PKDD'07), Sept. 2007
+
+--- Slide 68 ---
+Which Null-Invariant Measure Is Better?
+IR (Imbalance Ratio): measure the imbalance of two itemsets A and B in rule implicationsKulczynski and Imbalance Ratio (IR) together present a clear picture for all the three datasets D4 through D6D4  is balanced & neutralD5  is imbalanced & neutralD6  is very imbalanced & neutral
+
+--- Slide 69 ---
+69
+Chapter 5: Mining Frequent Patterns, Association and Correlations: Basic Concepts and Methods
+Basic ConceptsFrequent Itemset Mining Methods Which Patterns Are Interesting?—Pattern Evaluation MethodsSummary
+
+--- Slide 70 ---
+70
+Summary
+Basic concepts: association rules, support-confident framework, closed and max-patternsScalable frequent pattern mining methodsApriori (Candidate generation & test)Projection-based (FPgrowth, CLOSET+, ...)Vertical format approach (ECLAT, CHARM, ...)Which patterns are interesting? Pattern evaluation methods
+
+--- Slide 71 ---
+71
+Ref: Basic Concepts of Frequent Pattern Mining
+(Association Rules) R. Agrawal, T. Imielinski, and A. Swami.  Mining association rules between sets of items in large databases.  SIGMOD'93(Max-pattern) R. J. Bayardo. Efficiently mining long patterns from databases. SIGMOD'98(Closed-pattern) N. Pasquier, Y. Bastide, R. Taouil, and L. Lakhal. Discovering frequent closed itemsets for association rules. ICDT'99(Sequential pattern) R. Agrawal and R. Srikant. Mining sequential patterns. ICDE'95
+
+--- Slide 72 ---
+72
+Ref: Apriori and Its Improvements
+R. Agrawal and R. Srikant. Fast algorithms for mining association rules. VLDB'94H. Mannila, H. Toivonen, and A. I. Verkamo. Efficient algorithms for discovering association rules. KDD'94A. Savasere, E. Omiecinski, and S. Navathe. An efficient algorithm for mining association rules in large databases. VLDB'95J. S. Park, M. S. Chen, and P. S. Yu. An effective hash-based algorithm for mining association rules.  SIGMOD'95H. Toivonen.  Sampling large databases for association rules.  VLDB'96S. Brin, R. Motwani, J. D. Ullman, and S. Tsur. Dynamic itemset counting and implication rules for market basket analysis. SIGMOD'97S. Sarawagi, S. Thomas, and R. Agrawal.  Integrating association rule mining with relational database systems: Alternatives and implications.  SIGMOD'98
+
+--- Slide 73 ---
+73
+Ref: Depth-First, Projection-Based FP Mining
+R. Agarwal, C. Aggarwal, and V. V. V. Prasad. A tree projection algorithm for generation of frequent itemsets. J. Parallel and Distributed Computing, 2002.G. Grahne and J. Zhu, Efficiently Using Prefix-Trees in Mining Frequent Itemsets, Proc. FIMI'03B. Goethals and M. Zaki. An introduction to workshop on frequent itemset mining implementations. Proc. ICDM’03 Int. Workshop on Frequent Itemset Mining Implementations (FIMI’03), Melbourne, FL, Nov. 2003J. Han, J. Pei, and Y. Yin. Mining frequent patterns without candidate generation.  SIGMOD’ 00J. Liu, Y. Pan, K. Wang, and J. Han.  Mining Frequent Item Sets by Opportunistic Projection.  KDD'02J. Han, J. Wang, Y. Lu, and P. Tzvetkov. Mining Top-K Frequent Closed Patterns without Minimum Support.  ICDM'02J. Wang, J. Han, and J. Pei.  CLOSET+: Searching for the Best Strategies for Mining Frequent Closed Itemsets.  KDD'03
+
+--- Slide 74 ---
+74
+Ref: Vertical Format and Row Enumeration Methods
+M. J. Zaki, S. Parthasarathy, M. Ogihara, and W. Li. Parallel algorithm for discovery of association rules. DAMI:97.M. J. Zaki and C. J. Hsiao. CHARM: An Efficient Algorithm for Closed Itemset Mining, SDM'02. C. Bucila, J. Gehrke, D. Kifer, and W. White. DualMiner: A Dual-Pruning Algorithm for Itemsets with Constraints. KDD’02.F. Pan, G. Cong, A. K. H. Tung, J. Yang, and M. Zaki , CARPENTER: Finding Closed Patterns in Long Biological Datasets. KDD'03.H. Liu, J. Han, D. Xin, and Z. Shao, Mining Interesting Patterns from Very High Dimensional Data: A Top-Down Row Enumeration Approach, SDM'06.
+
+--- Slide 75 ---
+75
+Ref: Mining Correlations and Interesting Rules
+S. Brin, R. Motwani, and C. Silverstein.   Beyond market basket: Generalizing association rules to correlations.  SIGMOD'97.M. Klemettinen, H. Mannila, P. Ronkainen, H. Toivonen, and A. I. Verkamo.   Finding interesting rules from large sets of discovered association rules.  CIKM'94.R. J. Hilderman and H. J. Hamilton. Knowledge Discovery and Measures of Interest. Kluwer Academic, 2001.C. Silverstein, S. Brin, R. Motwani, and J. Ullman.  Scalable techniques for mining causal structures.   VLDB'98.P.-N. Tan, V. Kumar, and J. Srivastava.   Selecting the Right Interestingness Measure for Association Patterns.  KDD'02.E. Omiecinski.   Alternative Interest Measures for Mining Associations.  TKDE’03.T. Wu, Y. Chen, and J. Han, “Re-Examination of Interestingness Measures in Pattern Mining: A Unified Framework", Data Mining and Knowledge Discovery, 21(3):371-397, 2010

@@ -1,0 +1,654 @@
+=== Presentation: chap3_basic_classification.pptx (62 slides) ===
+
+--- Slide 1 ---
+Data Mining Classification: Basic Concepts and Techniques
+Lecture Notes for Chapter 3Introduction to Data Mining, 2nd EditionbyTan, Steinbach, Karpatne, Kumar
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+1
+
+--- Slide 2 ---
+Classification: Definition
+Given a collection of records (training set )Each record is by characterized by a tuple (x,y), where x is the attribute set and y is the class label x: attribute, predictor, independent variable, input y: class, response, dependent variable, outputTask:Learn a model that maps each attribute set x into one of the predefined class labels y
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+2
+
+--- Slide 3 ---
+Examples of Classification Task
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+3
+
+--- Slide 4 ---
+General Approach for Building Classification Model
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+4
+
+--- Slide 5 ---
+Classification Techniques
+Base ClassifiersDecision Tree based MethodsRule-based MethodsNearest-neighborNaïve Bayes and Bayesian Belief NetworksSupport Vector MachinesNeural Networks, Deep Neural NetsEnsemble ClassifiersBoosting, Bagging, Random Forests
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+5
+
+--- Slide 6 ---
+Example of a Decision Tree
+categorical
+categorical
+continuous
+class
+Home Owner
+MarSt
+Income
+YES
+NO
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+Splitting Attributes
+Training Data
+Model:  Decision Tree
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+6
+
+--- Slide 7 ---
+Apply Model to Test Data
+Home Owner
+MarSt
+Income
+YES
+NO
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+Test Data
+Start from the root of tree.
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+7
+
+--- Slide 8 ---
+Apply Model to Test Data
+MarSt
+Income
+YES
+NO
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+Test Data
+Home Owner
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+8
+
+--- Slide 9 ---
+Apply Model to Test Data
+MarSt
+Income
+YES
+NO
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+Test Data
+Home Owner
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+9
+
+--- Slide 10 ---
+Apply Model to Test Data
+MarSt
+Income
+YES
+NO
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+Test Data
+Home Owner
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+10
+
+--- Slide 11 ---
+Apply Model to Test Data
+MarSt
+Income
+YES
+NO
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+Test Data
+Home Owner
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+11
+
+--- Slide 12 ---
+Apply Model to Test Data
+MarSt
+Income
+YES
+NO
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+Test Data
+Assign Defaulted to “No”
+Home Owner
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+12
+
+--- Slide 13 ---
+Another Example of Decision Tree
+categorical
+categorical
+continuous
+class
+MarSt
+Home Owner
+Income
+YES
+NO
+NO
+Yes
+No
+Married
+Single, Divorced
+< 80K
+> 80K
+There could be more than one tree that fits the same data!
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+13
+
+--- Slide 14 ---
+Decision Tree Classification Task
+Decision Tree
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+14
+
+--- Slide 15 ---
+Decision Tree Induction
+Many Algorithms:Hunt’s Algorithm (one of the earliest)CARTID3, C4.5SLIQ,SPRINT
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+15
+
+--- Slide 16 ---
+General Structure of Hunt’s Algorithm
+Let Dt be the set of training records that reach a node tGeneral Procedure:If Dt contains records that belong the same class yt, then t is a leaf node labeled as ytIf Dt contains records that belong to more than one class, use an attribute test to split the data into smaller subsets. Recursively apply the procedure to each subset.
+Dt
+?
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+16
+
+--- Slide 17 ---
+Hunt’s Algorithm
+(3,0)
+(4,3)
+(3,0)
+(1,3)
+(3,0)
+(3,0)
+(1,0)
+(0,3)
+(3,0)
+(7,3)
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+17
+
+--- Slide 18 ---
+Hunt’s Algorithm
+(3,0)
+(4,3)
+(3,0)
+(1,3)
+(3,0)
+(3,0)
+(1,0)
+(0,3)
+(3,0)
+(7,3)
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+18
+
+--- Slide 19 ---
+Hunt’s Algorithm
+(3,0)
+(4,3)
+(3,0)
+(1,3)
+(3,0)
+(3,0)
+(1,0)
+(0,3)
+(3,0)
+(7,3)
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+19
+
+--- Slide 20 ---
+Hunt’s Algorithm
+(3,0)
+(4,3)
+(3,0)
+(1,3)
+(3,0)
+(3,0)
+(1,0)
+(0,3)
+(3,0)
+(7,3)
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+20
+
+--- Slide 21 ---
+Design Issues of Decision Tree Induction
+How should training records be split?Method for expressing test condition  depending on attribute typesMeasure for evaluating the goodness of a test conditionHow should the splitting procedure stop?Stop splitting if all the records belong to the same class or have identical attribute valuesEarly termination
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+21
+
+--- Slide 22 ---
+Methods for Expressing Test Conditions
+Depends on attribute typesBinaryNominalOrdinalContinuous
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+22
+
+--- Slide 23 ---
+Test Condition for Nominal Attributes
+Multi-way split: Use as many partitions as distinct values. Binary split:  Divides values into two subsets
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+23
+
+--- Slide 24 ---
+Test Condition for Ordinal Attributes
+Multi-way split: Use as many partitions as distinct valuesBinary split:  Divides values into two subsetsPreserve order property among attribute values
+This grouping violates order property
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+24
+
+--- Slide 25 ---
+Test Condition for Continuous Attributes
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+25
+
+--- Slide 26 ---
+Splitting Based on Continuous Attributes
+Different ways of handlingDiscretization to form an ordinal categorical attribute Ranges can be found by equal interval bucketing, equal frequency bucketing (percentiles), or clustering. Static – discretize once at the beginning Dynamic – repeat at each nodeBinary Decision: (A < v) or (A  v) consider all possible splits and finds the best cut can be more compute intensive
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+26
+
+--- Slide 27 ---
+How to determine the Best Split
+Before Splitting: 10 records of class 0,		10 records of class 1
+Which test condition is the best?
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+27
+
+--- Slide 28 ---
+How to determine the Best Split
+Greedy approach: Nodes with purer class distribution are preferredNeed a measure of node impurity:
+High degree of impurity
+Low degree of impurity
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+28
+
+--- Slide 29 ---
+Measures of Node Impurity
+Gini IndexEntropyMisclassification error
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+29
+𝐺𝑖𝑛𝑖 𝐼𝑛𝑑𝑒𝑥=1 − 𝑖=0 𝑐−1  𝑝 𝑖   𝑡  2
+𝐸𝑛𝑡𝑟𝑜𝑝𝑦=− 𝑖=0 𝑐−1  𝑝 𝑖  𝑡 𝑙𝑜 𝑔 2  𝑝 𝑖 (𝑡)
+𝐶𝑙𝑎𝑠𝑠𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛 𝑒𝑟𝑟𝑜𝑟= 1 −max⁡[𝑝 𝑖 (𝑡)]
+Where  𝒑 𝒊  𝒕  is the frequency of class 𝒊 at node t, and 𝒄 is the total number of classes
+
+--- Slide 30 ---
+Finding the Best Split
+Compute impurity measure (P) before splittingCompute impurity measure (M) after splitting Compute impurity measure of each child node M is the weighted impurity of child nodesChoose the attribute test condition that produces the highest gain 		Gain = P - Mor equivalently, lowest impurity measure after splitting (M)
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+30
+
+--- Slide 31 ---
+Finding the Best Split
+B?
+Yes
+No
+Node N3
+Node N4
+A?
+Yes
+No
+Node N1
+Node N2
+Before Splitting:
+Gain = P – M1    vs      P – M2
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+31
+
+--- Slide 32 ---
+Measure of Impurity: GINI
+Gini Index for a given node 𝒕 Where  𝒑 𝒊  𝒕  is the frequency of class 𝒊 at node 𝒕, and 𝒄 is the total number of classes  Maximum  of 1−1/𝑐 when records are equally distributed among all classes, implying the least beneficial situation for classificationMinimum  of 0 when all records belong to one class, implying the most beneficial situation for classificationGini index is used in decision tree algorithms such as CART, SLIQ, SPRINT
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+32
+𝐺𝑖𝑛𝑖 𝐼𝑛𝑑𝑒𝑥=1 −  𝑖=0 𝑐−1  𝑝 𝑖   𝑡  2
+
+--- Slide 33 ---
+Measure of Impurity: GINI
+Gini Index for a given node t :For 2-class problem (p, 1 – p): GINI = 1 – p2 – (1 – p)2 = 2p (1-p)
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+33
+𝐺𝑖𝑛𝑖 𝐼𝑛𝑑𝑒𝑥=1 −  𝑖=0 𝑐−1  𝑝 𝑖   𝑡  2
+
+--- Slide 34 ---
+Computing Gini Index of a Single Node
+P(C1) = 0/6 = 0     P(C2) = 6/6 = 1Gini = 1 – P(C1)2 – P(C2)2 = 1 – 0 – 1 = 0
+P(C1) = 1/6          P(C2) = 5/6Gini = 1 – (1/6)2 – (5/6)2 = 0.278
+P(C1) = 2/6          P(C2) = 4/6Gini = 1 – (2/6)2 – (4/6)2 = 0.444
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+34
+𝐺𝑖𝑛𝑖 𝐼𝑛𝑑𝑒𝑥=1 −  𝑖=0 𝑐−1  𝑝 𝑖   𝑡  2
+
+--- Slide 35 ---
+Computing Gini Index for a Collection of Nodes
+When a node 𝑝 is split into 𝑘 partitions (children)		where,	  𝑛 𝑖  = number of records at child 𝑖,    			 𝑛  = number of records at parent node 𝑝.
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+35
+𝐺𝐼𝑁 𝐼 𝑠𝑝𝑙𝑖𝑡 =  𝑖=1 𝑘   𝑛 𝑖  𝑛 𝐺𝐼𝑁𝐼(𝑖)
+
+--- Slide 36 ---
+Binary Attributes: Computing GINI Index
+Splits into two partitions (child nodes)Effect of Weighing partitions: Larger and purer partitions are sought
+B?
+Yes
+No
+Node N1
+Node N2
+Gini(N1) = 1 – (5/6)2 – (1/6)2 = 0.278 Gini(N2) = 1 – (2/6)2 – (4/6)2 = 0.444
+Weighted Gini of N1 N2= 6/12 * 0.278 +    6/12 * 0.444= 0.361
+Gain = 0.486 – 0.361 = 0.125
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+36
+
+--- Slide 37 ---
+Categorical Attributes: Computing Gini Index
+For each distinct value, gather counts for each class in the datasetUse the count matrix to make decisions
+Multi-way split
+Two-way split (find best partition of values)
+Which of these is the best?
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+37
+
+--- Slide 38 ---
+Continuous Attributes: Computing Gini Index
+Use Binary Decisions based on one valueSeveral Choices for the splitting valueNumber of possible splitting values = Number of distinct valuesEach splitting value has a count matrix associated with itClass counts in each of the partitions, A ≤ v and A > vSimple method to choose best vFor each v, scan the database to gather count matrix and compute its Gini indexComputationally Inefficient! Repetition of work.
+Annual Income ?
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+38
+
+--- Slide 39 ---
+Continuous Attributes: Computing Gini Index...
+For efficient computation: for each attribute,Sort the attribute on valuesLinearly scan these values, each time updating the count matrix and computing gini indexChoose the split position that has the least gini index
+Sorted Values
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+39
+
+--- Slide 40 ---
+Continuous Attributes: Computing Gini Index...
+For efficient computation: for each attribute,Sort the attribute on valuesLinearly scan these values, each time updating the count matrix and computing gini indexChoose the split position that has the least gini index
+Sorted Values
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+40
+
+--- Slide 41 ---
+Continuous Attributes: Computing Gini Index...
+For efficient computation: for each attribute,Sort the attribute on valuesLinearly scan these values, each time updating the count matrix and computing gini indexChoose the split position that has the least gini index
+Sorted Values
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+41
+
+--- Slide 42 ---
+Continuous Attributes: Computing Gini Index...
+For efficient computation: for each attribute,Sort the attribute on valuesLinearly scan these values, each time updating the count matrix and computing gini indexChoose the split position that has the least gini index
+Sorted Values
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+42
+
+--- Slide 43 ---
+Continuous Attributes: Computing Gini Index...
+For efficient computation: for each attribute,Sort the attribute on valuesLinearly scan these values, each time updating the count matrix and computing gini indexChoose the split position that has the least gini index
+Sorted Values
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+43
+
+--- Slide 44 ---
+Measure of Impurity: Entropy
+Entropy at a given node 𝒕 	Where  𝒑 𝒊  𝒕  is the frequency of class 𝒊 at node 𝒕, and 𝒄 is the total number of classes Maximum of  log 2 𝑐 when records are equally distributed among all classes, implying the least beneficial situation for classificationMinimum of 0 when all records belong to one class, implying most beneficial situation for classificationEntropy based computations are quite similar to the GINI index computations
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+44
+𝐸𝑛𝑡𝑟𝑜𝑝𝑦=− 𝑖=0 𝑐−1  𝑝 𝑖  𝑡 𝑙𝑜 𝑔 2  𝑝 𝑖 (𝑡)
+
+--- Slide 45 ---
+Computing Entropy of a Single Node
+P(C1) = 0/6 = 0     P(C2) = 6/6 = 1Entropy = – 0 log 0 – 1 log 1 = – 0 – 0 = 0
+P(C1) = 1/6          P(C2) = 5/6Entropy = – (1/6) log2 (1/6) – (5/6) log2 (1/6) = 0.65
+P(C1) = 2/6          P(C2) = 4/6Entropy = – (2/6) log2 (2/6) – (4/6) log2 (4/6) = 0.92
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+45
+𝐸𝑛𝑡𝑟𝑜𝑝𝑦=− 𝑖=0 𝑐−1  𝑝 𝑖  𝑡 𝑙𝑜 𝑔 2  𝑝 𝑖 (𝑡)
+
+--- Slide 46 ---
+Computing Information Gain After Splitting
+Information Gain: 		Parent Node, 𝑝 is split into 𝑘 partitions (children)		  𝑛 𝑖  is number of records in child node 𝑖Choose the split that achieves most reduction (maximizes GAIN)Used in the ID3 and C4.5 decision tree algorithmsInformation gain is the mutual information between the class variable and the splitting variable
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+46
+𝐺𝑎𝑖 𝑛 𝑠𝑝𝑙𝑖𝑡 =𝐸𝑛𝑡𝑟𝑜𝑝𝑦 𝑝 − 𝑖=1 𝑘   𝑛 𝑖  𝑛 𝐸𝑛𝑡𝑟𝑜𝑝𝑦(𝑖)
+
+--- Slide 47 ---
+Problem with large number of partitions
+Node impurity measures tend to prefer splits that result in large number of partitions, each being small but pureCustomer ID has highest information gain because entropy for all the children is zero
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+47
+
+--- Slide 48 ---
+Gain Ratio
+Gain Ratio: 	Parent Node, 𝑝 is split into 𝑘 partitions (children)	  𝑛 𝑖  is number of records in child node 𝑖Adjusts Information Gain by the entropy of the partitioning (𝑆𝑝𝑙𝑖𝑡 𝐼𝑛𝑓𝑜). Higher entropy partitioning (large number of small partitions) is penalized!Used in C4.5 algorithmDesigned to overcome the disadvantage of Information Gain
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+48
+𝐺𝑎𝑖𝑛 𝑅𝑎𝑡𝑖𝑜=  𝐺𝑎𝑖 𝑛 𝑠𝑝𝑙𝑖𝑡  𝑆𝑝𝑙𝑖𝑡 𝐼𝑛𝑓𝑜                𝑆𝑝𝑙𝑖𝑡 𝐼𝑛𝑓𝑜=− 𝑖=1 𝑘   𝑛 𝑖  𝑛 𝑙𝑜 𝑔 2    𝑛 𝑖  𝑛
+
+--- Slide 49 ---
+Gain Ratio
+Gain Ratio: 	Parent Node, 𝑝 is split into 𝑘 partitions (children)	  𝑛 𝑖  is number of records in child node 𝑖
+SplitINFO = 1.52
+SplitINFO = 0.72
+SplitINFO = 0.97
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+49
+𝐺𝑎𝑖𝑛 𝑅𝑎𝑡𝑖𝑜=  𝐺𝑎𝑖 𝑛 𝑠𝑝𝑙𝑖𝑡  𝑆𝑝𝑙𝑖𝑡 𝐼𝑛𝑓𝑜                𝑆𝑝𝑙𝑖𝑡 𝐼𝑛𝑓𝑜=  𝑖=1 𝑘   𝑛 𝑖  𝑛 𝑙𝑜 𝑔 2    𝑛 𝑖  𝑛
+
+--- Slide 50 ---
+Measure of Impurity: Classification Error
+Classification error at a node 𝑡Maximum of 1−1/𝑐 when records are equally distributed among all classes, implying the least interesting situationMinimum of 0 when all records belong to one class, implying the most interesting situation
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+50
+𝐸𝑟𝑟𝑜𝑟 𝑡 = 1 −max             𝑖 ⁡[ 𝑝 𝑖  𝑡 ]
+
+--- Slide 51 ---
+Computing Error of a Single Node
+P(C1) = 0/6 = 0     P(C2) = 6/6 = 1Error = 1 – max (0, 1) = 1 – 1 = 0
+P(C1) = 1/6          P(C2) = 5/6Error = 1 – max (1/6, 5/6) = 1 – 5/6 = 1/6
+P(C1) = 2/6          P(C2) = 4/6Error = 1 – max (2/6, 4/6) = 1 – 4/6 = 1/3
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+51
+𝐸𝑟𝑟𝑜𝑟 𝑡 = 1 −max             𝑖 ⁡[ 𝑝 𝑖  𝑡 ]
+
+--- Slide 52 ---
+Comparison among Impurity Measures
+For a 2-class problem:
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+52
+
+--- Slide 53 ---
+Misclassification Error vs Gini Index
+A?
+Yes
+No
+Node N1
+Node N2
+Gini(N1) = 1 – (3/3)2 – (0/3)2 = 0 Gini(N2) = 1 – (4/7)2 – (3/7)2 = 0.489
+Gini(Children) = 3/10 * 0 + 7/10 * 0.489= 0.342Gini improves but error remains the same!!
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+53
+
+--- Slide 54 ---
+Misclassification Error vs Gini Index
+A?
+Yes
+No
+Node N1
+Node N2
+Misclassification error for all three cases = 0.3 !
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+54
+
+--- Slide 55 ---
+Decision Tree Based Classification
+Advantages:Relatively inexpensive to constructExtremely fast at classifying unknown recordsEasy to interpret for small-sized treesRobust to noise (especially when methods to avoid overfitting are employed)Can easily handle redundant attributesCan easily handle irrelevant attributes (unless the attributes are interacting)Disadvantages: .Due to the greedy nature of splitting criterion,  interacting attributes (that can distinguish between classes together but not individually) may be passed over in favor of other attributed that are less discriminating.Each decision boundary involves only a single attribute
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+55
+
+--- Slide 56 ---
+Handling interactions
+X
+Y
++ : 1000 instanceso : 1000 instances
+Entropy (X) : 0.99 Entropy (Y) : 0.99
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+56
+
+--- Slide 57 ---
+Handling interactions
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+57
+
+--- Slide 58 ---
+Handling interactions given irrelevant attributes
++ : 1000 instanceso : 1000 instancesAdding Z as a noisy attribute generated from a uniform distribution
+Y
+Entropy (X) : 0.99 Entropy (Y) : 0.99Entropy (Z) : 0.98Attribute Z will be chosen for splitting!
+X
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+58
+
+--- Slide 59 ---
+Limitations of single attribute-based decision boundaries
+Both positive (+) and negative (o) classes generated from skewed Gaussians with centers at (8,8) and (12,12) respectively.
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+59
+
+--- Slide 60 ---
+Advantages of Artificial Neural NetworksArtificial neural networks have the ability to provide the data to be processed in parallel, which means they can handle more than one task at the same time.Artificial neural networks have been in resistance. This means that the loss of one or more cells, or neural networks, influences the performance of Artificial Neural networks.Artificial neural networks are used to store information on the network so that, even in the absence of a data pair, it does not mean that the network is not generating results.Artificial neural networks are gradually being broken down, which means that they will not suddenly stop working and these networks are gradually being broken down.We are able to train ANN’s that these networks learn from past events and make decisions.
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+60
+
+--- Slide 61 ---
+Disadvantages of Artificial Neural NetworksAs we mentioned before, with ANN arms hanging along with the execution of parallel processing, and so they need processors that support parallel processing, so the ANNs are dependent on the hardware.Since it’s similar to the functionality of the human brain, we may not be able to determine what is the proper network structure of an Artificial Neural network.Not only do artificial neural networks, but also the statistical models can be trained with only numeric data, so it makes it very difficult for ANN to understand the problem statement.When an artificial neural network that provides a solution to the problem statements that we really don’t know on what basis it will give the solution, and this time, ANN is not a reliable
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+61
+
+--- Slide 62 ---
+2/1/2021
+Introduction to Data Mining, 2nd Edition
+62
+Advantages of Using Naive Bayes ClassifierSimple to Implement. The conditional probabilities are easy to evaluate.Very fast – no iterations since the probabilities can be directly computed. So this technique is useful where speed of training is important.If the conditional Independence assumption holds, it could give great results.Disadvantages of Using Naive Bayes ClassifierConditional Independence Assumption does not always hold. In most situations, the feature show some form of dependency.Zero probability problem : When we encounter words in the test data for a particular class that are not present in the training data, we might end up with zero class probabilities. See the example below for more details: P(bumper | Ham) is 0 since bumper does not occuer in any ham (non-spam) documents in the training data.

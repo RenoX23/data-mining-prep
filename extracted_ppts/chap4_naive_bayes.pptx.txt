@@ -1,0 +1,126 @@
+=== Presentation: chap4_naive_bayes.pptx (26 slides) ===
+
+--- Slide 1 ---
+Bayesian ClassifiersIntroduction to Data Mining, 2nd EditionbyTan, Steinbach, Karpatne, Kumar
+Data Mining Classification: Alternative Techniques
+
+--- Slide 2 ---
+Bayes Classifier
+A probabilistic framework for solving classification problemsConditional Probability: Bayes theorem:
+
+--- Slide 3 ---
+Using Bayes Theorem for Classification
+Consider each attribute and class label as random variablesGiven a record with attributes (X1, X2,…, Xd), the goal  is to predict class YSpecifically, we want to find the value of Y that maximizes P(Y| X1, X2,…, Xd )Can we estimate P(Y| X1, X2,…, Xd ) directly from data?
+
+--- Slide 4 ---
+Using Bayes Theorem for Classification
+Approach:compute posterior probability P(Y | X1, X2, …, Xd) using the Bayes theoremMaximum a-posteriori: Choose Y that maximizes 		P(Y | X1, X2, …, Xd)  Equivalent to choosing value of Y that maximizes     	P(X1, X2, …, Xd|Y) P(Y)How to estimate P(X1, X2, …, Xd | Y )?
+
+--- Slide 5 ---
+Example Data
+Given a Test Record:
+We need to estimateP(Evade = Yes | X) and P(Evade = No | X)In the following we will replace 	Evade = Yes by Yes, and 	Evade = No by No
+
+--- Slide 6 ---
+Example Data
+Given a Test Record:
+
+
+--- Slide 7 ---
+Conditional Independence
+X and Y are conditionally independent given Z if P(X|YZ) = P(X|Z)Example: Arm length and reading skills Young child has shorter arm length and limited reading skills, compared to adultsIf age is fixed, no apparent relationship between arm length and reading skillsArm length and reading skills are conditionally independent given age
+
+--- Slide 8 ---
+Naïve Bayes Classifier
+Assume independence among attributes Xi when class is given:    P(X1, X2, …, Xd |Yj) = P(X1| Yj) P(X2| Yj)… P(Xd| Yj) Now we can estimate P(Xi| Yj) for all Xi and Yj combinations from the training dataNew point is classified to Yj if  P(Yj)  P(Xi| Yj)  is maximal.
+
+--- Slide 9 ---
+Naïve Bayes on Example Data
+Given a Test Record:
+P(X | Yes) = 		P(Refund = No | Yes) x 		P(Divorced | Yes) x 		P(Income = 120K | Yes)P(X | No) = 		P(Refund = No | No) x 		P(Divorced | No) x 		P(Income = 120K | No)
+
+--- Slide 10 ---
+Estimate Probabilities from Data
+P(y) = fraction of instances of class ye.g.,  P(No) = 7/10, 	        P(Yes) = 3/10For categorical attributes:       P(Xi =c| y) = nc/ n where |Xi =c| is number of instances having attribute value Xi =c and belonging to class yExamples:	P(Status=Married|No) = 4/7P(Refund=Yes|Yes)=0
+
+--- Slide 11 ---
+Estimate Probabilities from Data
+For continuous attributes: Discretization: Partition the range into bins:Replace continuous value with bin valueAttribute changed from continuous to ordinalProbability density estimation:Assume attribute follows a normal distributionUse data to estimate parameters of distribution    (e.g., mean and standard deviation)Once probability distribution is known, use it to estimate the conditional probability P(Xi|Y)
+
+--- Slide 12 ---
+Estimate Probabilities from Data
+Normal distribution:One for each (Xi,Yi) pairFor (Income, Class=No):If Class=No sample mean = 110 sample variance = 2975
+
+--- Slide 13 ---
+Example of Naïve Bayes Classifier
+P(X | No) = P(Refund=No | No)		  P(Divorced | No)		  P(Income=120K | No)	              = 4/7  1/7  0.0072 = 0.0006P(X | Yes) = P(Refund=No | Yes)   	                   P(Divorced | Yes)   	                   P(Income=120K | Yes)	               = 1  1/3  1.2  10-9 = 4  10-10Since P(X|No)P(No) > P(X|Yes)P(Yes)Therefore P(No|X) > P(Yes|X)      => Class = No
+Given a Test Record:
+Naïve  Bayes Classifier:P(Refund = Yes | No) = 3/7P(Refund = No | No) = 4/7P(Refund = Yes | Yes) = 0P(Refund = No | Yes) = 1P(Marital Status = Single | No) = 2/7P(Marital Status = Divorced | No) = 1/7P(Marital Status = Married | No) = 4/7P(Marital Status = Single | Yes) = 2/3P(Marital Status = Divorced | Yes) = 1/3P(Marital Status = Married | Yes) = 0For Taxable Income:If class = No: sample mean = 110	   sample variance = 2975If class = Yes: sample mean = 90	   sample variance = 25
+
+--- Slide 14 ---
+Naïve Bayes Classifier can make decisions with partial information about attributes in the test record
+P(Yes) = 3/10     P(No) = 7/10If we only know that marital status is Divorced, then:     P(Yes | Divorced) = 1/3 x 3/10 / P(Divorced)     P(No | Divorced) = 1/7 x 7/10 / P(Divorced)If we also know that Refund = No, then     P(Yes | Refund = No, Divorced) = 1 x 1/3 x 3/10 / 		          P(Divorced, Refund = No)     P(No | Refund = No, Divorced) = 4/7 x 1/7 x 7/10 /    		          P(Divorced, Refund = No)If we also know that Taxable Income = 120, then     P(Yes | Refund = No, Divorced, Income = 120) =                                              1.2 x10-9 x  1 x 1/3 x 3/10 /     	P(Divorced, Refund = No,  Income = 120 )     P(No | Refund = No, Divorced Income = 120) =                                        0.0072  x 4/7 x 1/7 x 7/10 /                	P(Divorced, Refund = No, Income = 120)
+Even in absence of information about any attributes, we can use Apriori Probabilities of Class Variable:
+Naïve  Bayes Classifier:P(Refund = Yes | No) = 3/7P(Refund = No | No) = 4/7P(Refund = Yes | Yes) = 0P(Refund = No | Yes) = 1P(Marital Status = Single | No) = 2/7P(Marital Status = Divorced | No) = 1/7P(Marital Status = Married | No) = 4/7P(Marital Status = Single | Yes) = 2/3P(Marital Status = Divorced | Yes) = 1/3P(Marital Status = Married | Yes) = 0For Taxable Income:If class = No: sample mean = 110	   sample variance = 2975If class = Yes: sample mean = 90	   sample variance = 25
+
+--- Slide 15 ---
+Issues with Naïve Bayes Classifier
+P(Yes) = 3/10     P(No) = 7/10          P(Yes | Married) = 0 x 3/10 / P(Married)     P(No | Married) = 4/7 x 7/10 / P(Married)
+Naïve  Bayes Classifier:P(Refund = Yes | No) = 3/7P(Refund = No | No) = 4/7P(Refund = Yes | Yes) = 0P(Refund = No | Yes) = 1P(Marital Status = Single | No) = 2/7P(Marital Status = Divorced | No) = 1/7P(Marital Status = Married | No) = 4/7P(Marital Status = Single | Yes) = 2/3P(Marital Status = Divorced | Yes) = 1/3P(Marital Status = Married | Yes) = 0For Taxable Income:If class = No: sample mean = 110	   sample variance = 2975If class = Yes: sample mean = 90	   sample variance = 25
+X = (Married)
+Given a Test Record:
+
+--- Slide 16 ---
+Issues with Naïve Bayes Classifier
+
+Naïve  Bayes Classifier:P(Refund = Yes | No) = 2/6P(Refund = No | No) = 4/6P(Refund = Yes | Yes) = 0P(Refund = No | Yes) = 1P(Marital Status = Single | No) = 2/6P(Marital Status = Divorced | No) = 0P(Marital Status = Married | No) = 4/6P(Marital Status = Single | Yes) = 2/3P(Marital Status = Divorced | Yes) = 1/3P(Marital Status = Married | Yes) = 0/3For Taxable Income:If class = No: sample mean = 91	   sample variance = 685If class = No: sample mean = 90	   sample variance = 25
+Consider the table with Tid = 7 deleted
+Given X = (Refund = Yes, Divorced, 120K)P(X | No) = 2/6 X 0 X 0.0083 = 0P(X | Yes) = 0 X 1/3 X 1.2 X 10-9 = 0
+Naïve Bayes will not be able to classify X as Yes or No!
+
+--- Slide 17 ---
+Issues with Naïve Bayes Classifier
+If one of the conditional probabilities is zero, then the entire expression becomes zeroNeed to use other estimates of conditional probabilities than simple fractionsProbability estimation:
+n: number of training instances belonging to class ync: number of instances with Xi = c and Y = yv: total number of attribute values that Xi can takep: initial estimate of (P(Xi = c|y) known apriorim: hyper-parameter for our confidence in p
+Laplace Estimate: 𝑃  𝑋 𝑖 =𝑐 𝑦)=  𝑛 𝑐 +1 𝑛+𝑣
+m−estimate: 𝑃  𝑋 𝑖 =𝑐 𝑦)=  𝑛 𝑐 +𝑚𝑝 𝑛+𝑚
+original: 𝑃  𝑋 𝑖 =𝑐 𝑦)=  𝑛 𝑐  𝑛
+
+--- Slide 18 ---
+Example of Naïve Bayes Classifier
+A: attributesM: mammalsN: non-mammals
+P(A|M)P(M) > P(A|N)P(N)=> Mammals
+
+--- Slide 19 ---
+Naïve Bayes (Summary)
+Robust to isolated noise pointsHandle missing values by ignoring the instance during probability estimate calculationsRobust to irrelevant attributesRedundant and correlated attributes will violate class conditional assumptionUse other techniques such as Bayesian Belief Networks (BBN)
+
+--- Slide 20 ---
+Naïve Bayes
+How does Naïve Bayes perform on the following dataset?
+Conditional independence of attributes is violated
+
+--- Slide 21 ---
+Bayesian Belief Networks
+Provides graphical representation of probabilistic relationships among a set of random variablesConsists of:A directed acyclic graph (dag) Node corresponds to a variable Arc corresponds to dependence relationship between a pair of variablesA probability table associating each node to its immediate parent
+
+--- Slide 22 ---
+Conditional Independence
+A node in a Bayesian network is conditionally independent of all of its nondescendants, if its parents are known
+D is parent of CA is child of CB is descendant of DD is ancestor of A
+
+--- Slide 23 ---
+Conditional Independence
+Naïve Bayes assumption:
+
+--- Slide 24 ---
+Probability Tables
+If X does not have any parents, table contains prior probability P(X)If X has only one parent (Y), table contains conditional probability P(X|Y)If X has multiple parents (Y1, Y2,…, Yk), table contains conditional probability P(X|Y1, Y2,…, Yk)
+
+--- Slide 25 ---
+Example of Bayesian Belief Network
+
+--- Slide 26 ---
+Example of Inferencing using BBN
+Given: X = (E=No, D=Yes, CP=Yes, BP=High)Compute P(HD|E,D,CP,BP)?P(HD=Yes| E=No,D=Yes) = 0.55P(CP=Yes| HD=Yes) = 0.8P(BP=High| HD=Yes) = 0.85P(HD=Yes|E=No,D=Yes,CP=Yes,BP=High)  0.55  0.8  0.85 = 0.374P(HD=No| E=No,D=Yes) = 0.45P(CP=Yes| HD=No) = 0.01P(BP=High| HD=No) = 0.2P(HD=No|E=No,D=Yes,CP=Yes,BP=High)  0.45  0.01  0.2 = 0.0009
+Classify X as Yes
